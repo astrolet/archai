@@ -1,0 +1,36 @@
+{
+  "name": "lin",
+  "description": "a language interface",
+  "keywords": [ "astrology", "aslrolet" ],
+  "version": "0.0.1",
+  "homepage": "http://astrolin.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orlin/lin.git"
+  },
+  "bugs": {
+    "mail" : "support@astrolet.net",
+    "web" : "https://www.pivotaltracker.com/projects/265847"
+  },
+  "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)",
+  "contributors": [],
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./index.js",
+  "dependencies":
+  { "coffee-script": ""
+  , "underscore": ""
+  , "underscore.string": "https://github.com/edtsech/underscore.string/tarball/master"
+  , "eyes": ""
+  , "yaml": ""
+  , "markdown": ""
+  , "geoutils": ""
+  },
+  "scripts": {
+    "test": "vows test/*.js"
+  },
+  "engines": {
+    "node": ">= 0.4.5 < 0.5.0"
+  }
+}
