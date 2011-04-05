@@ -1,9 +1,14 @@
-# A language interface
+A language interface
+====================
 
-A few plants for Astrolet's forest:
+A few plants for the common forest:
 
 * Gaia (geo location / time)
 * Massage (streams and data formats)
 * _ (underscore, ~.string & other mixins)
 
-## Unlicense ([copy-none](http://unlicense.org/))
+License
+-------
+
+This is free and unencumbered public domain software. For more information,
+see <http://unlicense.org/> or the accompanying {file:UNLICENSE} file.
