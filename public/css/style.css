@@ -1,0 +1,13 @@
+/* some available fonts (undecided which to keep)
+// font-family: "apertura-1","apertura-2";
+// font-family: "inconsolata-1","inconsolata-2";
+// font-family: "galette-1","galette-2";
+*/
+
+body#whole {
+  font-family: "galette-1","galette-2";
+}
+
+h1, h2 {
+  font-family: "bd-jupiter-stencil-1", "bd-jupiter-stencil-2";
+}

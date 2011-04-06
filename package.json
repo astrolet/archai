@@ -23,6 +23,7 @@
   , "yaml": ""
   , "markdown": ""
   , "geoutils": ""
+  , "zappa": "https://github.com/orlin/zappa/tarball/master"
   }
 , "devDependencies": { "vows": "" }
 , "scripts": { "test": "vows spec/*.js" }
