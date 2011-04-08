@@ -1,4 +1,4 @@
-_       = require("undermix")._
+_       = require("massagist")._
 Geo     = require("geoutils").Geo
 LatLon  = require("geoutils").LatLon
 

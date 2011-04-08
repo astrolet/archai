@@ -1,7 +1,7 @@
 { "name": "lin"
-, "description": "grow astrology like a forest"
+, "description": "astrology language interface"
 , "keywords": [ "astrology", "aslrolet", "commonjs", "documentation" ]
-, "version": "0.0.1-1"
+, "version": "0.0.1-2"
 , "homepage": "http://astrolin.com"
 , "repository":
   { "type": "git"
@@ -17,11 +17,7 @@
 , "main": "index"
 , "dependencies":
   { "coffee-script": ""
-  , "underscore": ""
-  , "underscore.string": "https://github.com/edtsech/underscore.string/tarball/master"
-  , "eyes": ""
-  , "yaml": ""
-  , "markdown": ""
+  , "massagist": ""
   , "geoutils": ""
   , "zappa": "https://github.com/orlin/zappa/tarball/master"
   }

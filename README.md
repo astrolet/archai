@@ -1,11 +1,9 @@
 A language interface
 ====================
 
-A few plants for the common forest:
+Even a big forest starts with a single tree.
 
-* Gaia (geo location / time)
-* Massage (streams and data formats)
-* _ (underscore, ~.string & other mixins)
+Use `require("lin").Gaia;` for geo location / time.
 
 License
 -------
