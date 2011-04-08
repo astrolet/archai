@@ -103,4 +103,5 @@ class Gaia
     console.log "toISOString: #{@date.toISOString()}"
     ###
 
-exports.Gaia = Gaia
+
+module.exports = Gaia

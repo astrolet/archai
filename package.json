@@ -21,8 +21,8 @@
   , "geoutils": ""
   , "zappa": "https://github.com/orlin/zappa/tarball/master"
   }
-, "devDependencies": { "vows": "" }
-, "scripts": { "test": "vows spec/*.js" }
+, "devDependencies": { "vows": "", "assert": "" }
+, "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.4 || 0.5", "npm" : "1" }
 , "licenses":
