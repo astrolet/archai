@@ -1,40 +1,34 @@
-get "/": ->
+util = require 'util'
+path = require 'path'
+express = require 'express'
+coffeekup = require 'coffeekup'
+
+# Express app
+app = express.createServer()
+
+# Configuration
+app.configure ->
+  node_server = path.normalize __dirname
+  app.set 'root', node_server
+  app.use express.logger()
+  app.use app.router
+  app.use express.static(node_server + '/public')
+  app.set 'views', node_server + '/views'  
+  app.register '.coffee', coffeekup
+  app.set 'view engine', 'coffee'
+  app.set 'view options', { layout: yes }
+  app.enable 'show exceptions'
+
+# Home page
+app.get "/", (req, res, next) ->
   @title = "Welcome"
-  render "index"
+  res.render "index", format: true
 
-view index: ->
-  p -> center '''
-    grow astrology like the woods
-    <br/>
-    grow stronger with each tree
-  '''
+# Catch and log any exceptions that may bubble to the top.
+process.addListener 'uncaughtException', (err) ->
+  util.puts "Uncaught Exception: #{err.toString()}"
 
-layout ->
-  doctype 5
-  html lang: "en", ->
-    head ->
-      meta charset: 'utf-8'
-
-      if @title?
-        title "Astro 林 #{@title}"
-      else
-        title "Astro 林" # route?
-
-      meta(name: 'description', content: @description) if @description?
-      link(rel: 'canonical', href: @canonical) if @canonical?
-
-      link rel: 'icon', href: '/favicon.ico'
-
-      style '''
-        .wf-loading { visibility: hidden }
-      '''
-      script src: "http://use.typekit.com/loe7yzm.js"
-      script "try{Typekit.load();}catch(e){}"
-
-      link rel: 'stylesheet', href: '/css/style.css'
-
-    body id: "whole", ->
-      div id: "header", ->
-        h1 -> center "ASTRO 林 LIN"
-      div id: "torso", ->
-        @content
+# Start the server.
+port = parseInt(process.env.C9_PORT || process.env.PORT || 8001)
+app.listen port, null # app.address().port # null host will accept connections from other instances
+console.log "Express been started on :%s", port

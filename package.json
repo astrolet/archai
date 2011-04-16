@@ -16,10 +16,11 @@
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "coffee-script": ""
-  , "massagist": ""
-  , "geoutils": ""
-  , "zappa": "https://github.com/orlin/zappa/tarball/master"
+  { "coffee-script": "~1.0"
+  , "massagist": "*"
+  , "geoutils": "~0.1"
+  , "express": "~2.2"
+  , "coffeekup": "https://github.com/orlin/coffeekup/tarball/master"
   }
 , "devDependencies": { "vows": "", "assert": "" }
 , "scripts": { "test": "cake -s test" }
