@@ -20,7 +20,7 @@
   , "massagist": "*"
   , "geoutils": "~0.1"
   , "express": "~2.2"
-  , "coffeekup": "https://github.com/orlin/coffeekup/tarball/master"
+  , "jade": "~0.10"
   }
 , "devDependencies": { "vows": "", "assert": "" }
 , "scripts": { "test": "cake -s test" }

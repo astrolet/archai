@@ -1,9 +1,9 @@
 util = require 'util'
 path = require 'path'
-express = require 'express'
-coffeekup = require 'coffeekup'
+jade = require 'jade'
 
 # Express app
+express = require 'express'
 app = express.createServer()
 
 # Configuration
@@ -13,16 +13,15 @@ app.configure ->
   app.use express.logger()
   app.use app.router
   app.use express.static(node_server + '/public')
-  app.set 'views', node_server + '/views'  
-  app.register '.coffee', coffeekup
-  app.set 'view engine', 'coffee'
+  app.set 'views', node_server + '/views'
+  app.register '.html', jade
+  app.set 'view engine', 'html'
   app.set 'view options', { layout: yes }
   app.enable 'show exceptions'
 
 # Home page
 app.get "/", (req, res, next) ->
-  @title = "Welcome"
-  res.render "index", format: true
+  res.render "index", { title: "Welcome" }
 
 # Catch and log any exceptions that may bubble to the top.
 process.addListener 'uncaughtException', (err) ->
