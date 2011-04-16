@@ -16,16 +16,16 @@
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "coffee-script": "~1.0"
+  { "coffee-script": "~1.0.1"
   , "massagist": "*"
-  , "geoutils": "~0.1"
-  , "express": "~2.2"
-  , "jade": "~0.10"
+  , "geoutils": "~0.1.0"
+  , "express": "~2.2.2"
+  , "jade": "~0.10.4"
   }
-, "devDependencies": { "vows": "", "assert": "" }
+, "devDependencies": { "vows": "*" }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
-, "engines" : { "node" : "0.4 || 0.5", "npm" : "1" }
+, "engines" : { "node" : "0.4 || 0.5" }
 , "licenses":
   [ { "type": "Unlicense"
     , "url" : "http://unlicense.org/"
