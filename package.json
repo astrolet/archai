@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "astrology language interface"
 , "keywords": [ "astrology", "aslrolet", "commonjs", "documentation" ]
-, "version": "0.0.1-2"
+, "version": "0.0.1-3"
 , "homepage": "http://astrolin.com"
 , "repository":
   { "type": "git"
@@ -9,7 +9,7 @@
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "web" : "https://www.pivotaltracker.com/projects/265847"
+  , "web" : "https://github.com/astrolet/lin/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []

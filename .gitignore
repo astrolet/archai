@@ -6,11 +6,6 @@ log
 .hg/*
 .svn/*
 
-# Duostack
-mnt
-log
-tmp
-
 # Node
 node_modules
 lib-cov
@@ -25,3 +20,10 @@ lib-cov
 pids
 logs
 results
+
+# Tools
+.settings.xml
+
+# Duostack
+mnt
+tmp

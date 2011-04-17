@@ -3,3 +3,9 @@ p
     | grow astrology like the woods
     | <br/>
     | grow stronger with each tree
+br
+p
+    - each project in keys(projects)
+      .project
+        h2
+          a(href= "/to/" + project) #{project.toUpperCase()}

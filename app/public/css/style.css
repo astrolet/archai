@@ -5,9 +5,14 @@
 */
 
 #whole {
+  text-align: center;
   font-family: "galette-1","galette-2";
 }
 
-h1, h2 {
+h1 {
   font-family: "bd-jupiter-stencil-1", "bd-jupiter-stencil-2";
+}
+
+.project, .somewhere {
+  font-family: "bd-jupiter-1", "bd-jupiter-2";
 }

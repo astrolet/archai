@@ -3,7 +3,12 @@ html(lang="en")
   head
     meta(charset="utf-8")
 
-    - var entitled = "Astro 林"
+    - var prefix = "Astro"
+    - var chinese = "林"
+    - if (typeof headest == "undefined")
+      - headest = prefix.toUpperCase()
+
+    - var entitled = prefix + " " + chinese
     - if (locals.title)
       - entitled += ' ' + title
     - // else + route?
@@ -21,7 +26,11 @@ html(lang="en")
     link(rel="stylesheet", href="/css/style.css")
 
   body#whole
-    center
-      #header
-        h1 ASTRO 林 LIN
-      #torso!= body
+    #header
+      - if (typeof forehead == "undefined")
+        - forehead = "LIN"
+      h1
+        != headest + "&nbsp;"
+        a(href="/")= chinese
+        != "&nbsp;" + forehead
+    #torso!= body
