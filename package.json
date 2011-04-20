@@ -22,7 +22,7 @@
   , "express": "~2.2.2"
   , "jade": "~0.10.4"
   }
-, "devDependencies": { "vows": "*" }
+, "devDependencies": { "vows": "*", "node-dev": "*" }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.4 || 0.5" }
