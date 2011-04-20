@@ -1,0 +1,25 @@
+# first:
+# `gem install terminitor` # in Gemfile (is Linux ok)?
+# `echo "LIN_PATH=~/<path/to/lin>" >> ~/.bash_profile`
+# `source ~/.bash_profile`
+# later:
+# `cd LIN_PATH && bundle exec terminitor start`
+
+before { run 'cd LIN_PATH' }
+
+tab :name => " 林 ", :selected => true do
+  run "clear"
+  run "ls -a"
+end
+
+tab :name => " 林 Node.js ", :settings => "Grass" do
+  run "node-dev --debug server.js"
+end
+
+tab :name => " 林 Node-Inspector ", :settings => "Red Sands" do
+  run "node-inspector"
+end
+
+tab :name => " 林 LiveReload ", :settings => "Red Sands" do
+  run "livereload"
+end

@@ -34,4 +34,4 @@ task 'assets:watch', 'Watch source files and build JS & CSS', (options) ->
     proc.on 'exit', (status) -> process.exit(1) if status != 0
 
   # runCommand 'sass', ['--watch', 'public/css/sass:public/css']
-  runCommand 'coffee', ['-wc', 'app', 'lib']
+  runCommand 'coffee', ['-wc', 'app', 'app/public', 'lib']

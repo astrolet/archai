@@ -23,6 +23,7 @@ results
 
 # Tools
 .settings.xml
+app/public/watch.*
 
 # Duostack
 mnt
