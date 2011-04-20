@@ -15,8 +15,8 @@
         tracker: "265847"
       },
       sin: {
-        package: "gravity",
-        tracker: "203533"
+        tracker: "203533",
+        package: "gravity"
       },
       eden: {
         tracker: "203533"
@@ -37,7 +37,7 @@
       };
       details = _.defaults(details, defaults);
       links = {};
-      _ref = ["source", "issues", "tracker", "package"];
+      _ref = ["source", "tracker", "package"];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         key = _ref[_i];
         if (details[key] !== false) {

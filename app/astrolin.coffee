@@ -17,8 +17,8 @@ app.helpers
     lin:
       tracker: "265847"
     sin:
-      package: "gravity"
       tracker: "203533"
+      package: "gravity"
     eden:
       tracker: "203533"
 
@@ -34,7 +34,7 @@ app.helpers
     details = _.defaults(details, defaults)
     links = {}
 
-    for key in ["source", "issues", "tracker", "package"]
+    for key in ["source", "tracker", "package"]
       if details[key] isnt false
         if details[key].match /^http/
           links[key] = details[key]
