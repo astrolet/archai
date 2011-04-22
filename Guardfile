@@ -1,6 +1,16 @@
 # More info at http://github.com/guard/guard#readme
 # NOTE: this file is kept for reference (of effort)
 
+# I don't like ego (but it's useful)
+guard 'ego' do
+  watch('Guardfile')
+end
+
+# Everything doesn't need to be "reinvented" for node (e.g. what's the point of stylus & nib?)
+guard 'compass', :configuration_file => "app/styles/compass.rb" do
+  watch /^app\/styles\/(.*)\.s[ac]ss/
+end
+
 =begin
 Because livereload is not ideal (see https://github.com/mockko/livereload/issues/26) ...
 I experimented with this weirdo coffee / js workflow alternative:
@@ -13,10 +23,7 @@ This didn't quite work, so for now a ridiculous 1.8.7 install is preferable to t
 See wiki for more info.
 =end
 
-# I don't like ego (but it's useful)
-guard 'ego' do
-  watch('Guardfile')
-end
+=begin
 
 # it could be that blocks (do / end) cancels reloading (seemed so for watch.js)
 guard 'livereload', :apply_js_live => false, :apply_css_live => false do
@@ -42,3 +49,5 @@ guard 'shell' do
     puts "Wrote ticking #{tock} to trigger livereload."
   end
 end
+
+=end

@@ -22,6 +22,7 @@ logs
 results
 
 # Tools
+.sass-cache
 .settings.xml
 app/public/watch.*
 
