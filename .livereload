@@ -13,4 +13,5 @@ config.apply_js_live = false
 config.apply_css_live = false
 
 # wait long enough for node-dev to restart server.js (original 50ms = 0.05)
+# config.grace_period = 0.05 # the more responsive version for when node.js reload is not necessary (e.g. design work)
 config.grace_period = 3.00
