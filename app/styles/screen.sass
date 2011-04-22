@@ -1,10 +1,11 @@
 @import fonts
 @import colors
 
-// @import compass/reset
-@import compass/css3/border-radius
-@import compass/css3/box-shadow
-@import compass/css3/text-shadow
+// @import "compass/reset"
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+@import "compass/css3/text-shadow"
+@import "compass/utilities/links"
 
 .hidden
   visibility: hidden
@@ -29,9 +30,12 @@ h1
   +font-vars($fonts-menu)
 
 .project
-  height: 2em
+  height: 1.5em
 
 #whole
+  a
+    +hover-link
+    color: indigo
   color: $color_txt
   +font-vars($fonts-text)
   background-color: $color_bg
