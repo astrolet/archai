@@ -27,3 +27,7 @@ end
 tab :name => " 林 Guard ", :settings => "Red Sands" do
   run "bundle exec guard --notify true"
 end
+
+tab :name => " 林 Coffee ", :settings => "Red Sands" do
+  run "cake assets:watch"
+end

@@ -49,7 +49,7 @@
                 links[key] = "http://search.npmjs.org/#/" + details[key];
                 break;
               case "tracker":
-                links[key] = "http://pivotaltracker.com/projects/" + details[key];
+                links[key] = "https://www.pivotaltracker.com/projects/" + details[key];
                 break;
               case "source":
               case "issues":

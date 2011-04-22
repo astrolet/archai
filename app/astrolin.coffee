@@ -43,7 +43,7 @@ app.helpers
             when "package"
               links[key] = "http://search.npmjs.org/#/#{details[key]}"
             when "tracker"
-              links[key] = "http://pivotaltracker.com/projects/#{details[key]}"
+              links[key] = "https://www.pivotaltracker.com/projects/#{details[key]}"
             when "source", "issues"
               links[key] = "#{github}#{details[key]}"
     links
