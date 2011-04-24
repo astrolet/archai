@@ -1,6 +1,6 @@
 # config:
-public_dir = "app/public"
-sass_dir = "app/styles"
+public_dir = "web/public"
+sass_dir = "web/styles"
 http_path = "/"
 http_stylesheets_path = "css"
 http_images_path = "img"

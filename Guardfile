@@ -1,5 +1,4 @@
 # More info at http://github.com/guard/guard#readme
-# NOTE: this file is kept for reference (of effort)
 
 # I don't like ego (but it's useful)
 guard 'ego' do
@@ -7,8 +6,8 @@ guard 'ego' do
 end
 
 # Everything doesn't need to be "reinvented" for node (e.g. what's the point of stylus & nib?)
-guard 'compass', :configuration_file => "app/styles/compass.rb" do
-  watch /^app\/styles\/(.*)\.s[ac]ss/
+guard 'compass', :configuration_file => "web/styles/compass.rb" do
+  watch /^web\/styles\/(.*)\.s[ac]ss/
 end
 
 =begin
@@ -24,6 +23,8 @@ See wiki for more info.
 =end
 
 =begin
+
+# the following stuff is kept for reference (of effort)
 
 # it could be that blocks (do / end) cancels reloading (seemed so for watch.js)
 guard 'livereload', :apply_js_live => false, :apply_css_live => false do

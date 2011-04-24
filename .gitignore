@@ -24,7 +24,7 @@ results
 # Tools
 .sass-cache
 .settings.xml
-app/public/watch.*
+web/public/watch.*
 
 # Duostack
 mnt
