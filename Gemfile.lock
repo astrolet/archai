@@ -43,6 +43,7 @@ GEM
     rb-appscript (0.6.1)
     rb-fsevent (0.4.0)
     ruby-json (1.1.2)
+    sass (3.1.1)
     terminitor (0.5.1)
       github (~> 0.6.2)
       rb-appscript (~> 0.6.1)
@@ -63,4 +64,5 @@ DEPENDENCIES
   guard-ego
   livereload
   rb-fsevent
+  sass
   terminitor
