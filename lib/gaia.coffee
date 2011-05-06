@@ -1,11 +1,9 @@
+ut      = require("ut")
 _       = require("massagist")._
 Geo     = require("geoutils").Geo
 LatLon  = require("geoutils").LatLon
 
 class Gaia
-
-  iso8601Offset: /[-+]\d{2}:\d{2}$/
-  iso8601Format: /^(\d{4})-(\d{2})-(\d{2})((([T ](\d{2}):(\d{2})(:(\d{2})(\.(\d+))?)?)?)?)?(([-+])(\d{2}):(\d{2}))?(Z)?$/
 
   pinpoint: (where) ->
     if where instanceof String
@@ -37,7 +35,7 @@ class Gaia
     # time validation: format / defaults
     # http://en.wikipedia.org/wiki/ISO-8601
     if moment?
-      unless moment.match @iso8601Format
+      unless ut.isoMatchFormat(moment)
         console.log "Invalid date-time format of: #{moment}"
         return
       time = moment
@@ -49,7 +47,7 @@ class Gaia
       # to set the offset, will need to adjust the time as well
       # time = time.replace /Z$/, @tz
       # TODO: do the math / correction if there is any use for it
-    else if offset = time.match @iso8601Offset
+    else if offset = ut.isoMatchOffset(time)
       # offset is provided - verify it is correct
       offset = offset.toString()
       unless offset is @tz
@@ -67,29 +65,7 @@ class Gaia
     @iso = time
     @time = new Date(time)
     @utc = @time.toISOString();
-
-    # swiss ephemeris doesn't parse the utc iso strings
-    # node gets the getUTCMonth() wrong (-1), so don't trust it
-    ###
-    @ut = [ @time.getUTCFullYear()
-          , @time.getUTCMonth()
-          , @time.getUTCDate()
-          , @time.getUTCHours()
-          , @time.getUTCMinutes()
-          , "#{@time.getUTCSeconds()}.#{@time.getUTCMilliseconds()}"
-          ]
-    ###
-
-    # regex-parse the @utc string (taken from DateExtensions.js)
-    # TODO: ask author why he also sutracts 1 from month (maybe the v8 / node.js implementation copied his bug?)
-    t = @utc.match @iso8601Format
-    @ut = [ Number(t[1])
-          , Number(t[2])
-          , Number(t[3])
-          , Number(t[7])
-          , Number(t[8])
-          , Number("#{t[10]}.#{t[12]}")
-          ]
+    @ut = ut.c(@utc)
 
     ###
     console.log "@iso: #{@iso}"
