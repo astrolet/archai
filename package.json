@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "astrology language interface"
 , "keywords": [ "astrology", "aslrolet", "commonjs", "documentation" ]
-, "version": "0.0.1-4"
+, "version": "0.0.1-5"
 , "homepage": "http://astrolin.com"
 , "repository":
   { "type": "git"

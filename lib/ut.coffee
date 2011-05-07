@@ -23,13 +23,15 @@ exports.isoMatchOffset = (iso) ->
 
 exports.c = (utc = (new Date Date.now()).toISOString()) ->
   t = utc.match(iso8601Format)
+  seconds = t[10] || 0 # optional
+  seconds+= ".#{t[12]}" if t[12]? # floating point precise
   return [ Number(t[1])
          , Number(t[2])
          , Number(t[3])
          , Number(t[7])
          , Number(t[8])
-         , Number("#{t[10]}.#{t[12]}")
-         , 1 # Gregorian flag correct?
+         , Number(seconds)
+         , 1 # Gregorian flag - correct?
          ]
 
 # Node gets the getUTCMonth() wrong (-1), so don't trust it:
