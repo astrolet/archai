@@ -12,26 +12,14 @@ tab :name => " 林 ", :selected => true do
   run "ls -a"
 end
 
-tab :name => " 林 Node.js ", :settings => "Grass" do
-  run "node-dev --debug server.js"
-end
-
-tab :name => " 林 Node-Inspector ", :settings => "Red Sands" do
-  run "node-inspector"
-end
-
-tab :name => " 林 LiveReload ", :settings => "Red Sands" do
-  run "bundle exec livereload"
-end
-
-tab :name => " 林 Guard ", :settings => "Red Sands" do
-  run "bundle exec guard --notify true"
-end
-
 tab :name => " 林 Coffee ", :settings => "Red Sands" do
   run "cake assets:watch"
 end
 
 tab :name => " 林 docs/ ", :settings => "Grass" do
   run "bundle exec serve docs"
+end
+
+tab :name => " 林 LiveReload ", :settings => "Red Sands" do
+  run "bundle exec livereload docs"
 end

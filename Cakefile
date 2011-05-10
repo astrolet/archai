@@ -48,7 +48,7 @@ task 'test', 'Test the app', (options) ->
 task 'assets:watch', 'Watch source files and build lib/*.js & docs/', (options) ->
 
   compileCoffee = (callback) ->
-    runCommand 'coffee', ['-wc', 'web', 'web/public', 'lib']
+    runCommand 'coffee', ['-wc', 'lib']
 
   watchStuff = (callback) ->
     watch_rate = 100 #ms
@@ -100,6 +100,7 @@ task 'pages', "Build pages", ->
       (sh "ronn -stoc -5 doc/*.md")
       (sh "mv doc/*.html pages/")
       (sh "rm doc/index.md")
+      (sh "rm doc/UNLICENSE.md")
     ], callback
 
   buildAnnotations = (callback) ->

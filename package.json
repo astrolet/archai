@@ -1,8 +1,8 @@
 { "name": "lin"
 , "description": "astrology language interface"
-, "keywords": [ "astrology", "aslrolet", "commonjs", "documentation" ]
-, "version": "0.0.1-5"
-, "homepage": "http://astrolin.com"
+, "keywords": [ "astrology", "aslrolet", "commonjs" ]
+, "version": "0.0.1-6"
+, "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
   , "url": "git://github.com/astrolet/lin.git"
@@ -13,19 +13,15 @@
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
-, "directories": { "lib": "./lib", "web": "./web" }
+, "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
   { "geoutils": "~0.1.0"
   , "massagist": "*"
-  , "express": "~2.2.2"
-  , "jade": "~0.10.4"
   }
 , "devDependencies":
   { "coffee-script": "*"
   , "vows": "*"
-  , "node-dev": "*"
-  , "node-inspector": "*"
   , "eyes": "*"
   , "watch-tree": "*"
   , "docco": "*"

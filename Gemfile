@@ -5,15 +5,7 @@
 
 source "http://rubygems.org"
 
-gem "sass"
-gem "compass"
-
 gem "growl"
-gem "guard"
-gem "guard-ego"
-gem "guard-compass", :git => "https://github.com/welaika/guard-compass.git" # growl fix
-# gem "guard-shell"
-# gem "guard-livereload"
 gem "livereload"
 gem "rb-fsevent"
 gem "terminitor"
