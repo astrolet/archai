@@ -16,16 +16,24 @@
 , "directories": { "lib": "./lib", "web": "./web" }
 , "main": "index"
 , "dependencies":
-  { "coffee-script": "~1.0.1"
+  { "geoutils": "~0.1.0"
   , "massagist": "*"
-  , "geoutils": "~0.1.0"
   , "express": "~2.2.2"
   , "jade": "~0.10.4"
   }
-, "devDependencies": { "vows": "*", "node-dev": "*", "node-inspector": "*" }
+, "devDependencies":
+  { "coffee-script": "*"
+  , "vows": "*"
+  , "node-dev": "*"
+  , "node-inspector": "*"
+  , "eyes": "*"
+  , "watch-tree": "*"
+  , "docco": "*"
+  , "async": "*"
+  }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
-, "engines" : { "node" : "0.4 || 0.5" }
+, "engines" : { "node" : "0.4" }
 , "licenses":
   [ { "type": "Unlicense"
     , "url" : "http://unlicense.org/"

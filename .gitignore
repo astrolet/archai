@@ -8,6 +8,7 @@ log
 
 docs
 pages
+doc/UNLICENSE.md
 
 # Node
 node_modules

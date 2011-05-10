@@ -1,0 +1,7 @@
+# annotations
+ut(3)               annotations/ut
+gaia(3)             annotations/gaia
+
+# external manuals
+Index(7)            http://astrolet.github.com/lin
+Home(7)             http://astrolin.com/to/

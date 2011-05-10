@@ -31,3 +31,7 @@ end
 tab :name => " 林 Coffee ", :settings => "Red Sands" do
   run "cake assets:watch"
 end
+
+tab :name => " 林 docs/ ", :settings => "Grass" do
+  run "bundle exec serve docs"
+end
