@@ -5,6 +5,8 @@
 
 source "http://rubygems.org"
 
+gem "ronn"
+gem "serve"
 gem "growl"
 gem "livereload"
 gem "rb-fsevent"

@@ -43,8 +43,6 @@ task 'test', 'Test the app', (options) ->
   vows.stderr.on 'data', print
 
 
-# taken from https://gist.github.com/920698
-
 task 'assets:watch', 'Watch source files and build lib/*.js & docs/', (options) ->
 
   compileCoffee = (callback) ->
