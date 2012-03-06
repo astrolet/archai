@@ -226,7 +226,7 @@ task 'pages', "Build pages", ->
 
   buildAnnotations = (callback) ->
     series [
-      (sh "docco lib/*.coffee")
+      invoke "docs"
       (sh "cp -r docs pages/annotations")
     ], callback
 
