@@ -224,14 +224,11 @@ task 'pages', "Build pages", ->
       (sh "rm doc/UNLICENSE.md")
     ], callback
 
-  buildAnnotations = (callback) ->
-    series [
-      invoke "docs"
-      (sh "cp -r docs pages/annotations")
-    ], callback
-
   build = (callback) ->
-    parallel [buildMan, buildAnnotations], callback
+    parallel [
+      buildMan
+      (sh "cake docs && cp -r docs pages/annotations")
+    ], callback
 
   series [
     (sh "if [ ! -d pages ] ; then mkdir pages ; fi") # mkdir pages only if it doesn't exist
