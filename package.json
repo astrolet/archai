@@ -32,7 +32,7 @@
   , "async": "*"
   , "police": "*"
   }
-, "scripts": { "test": "cake test" }
+, "scripts": { "test": "make test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":

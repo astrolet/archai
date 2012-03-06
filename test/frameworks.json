@@ -1,7 +1,7 @@
 { "mocha":
   { "alias":
     { "verbose": "--reporter spec" }
-  , "paths": ["mocha"]
+  , "paths": ["lib"]
   , "extension": ".spec.coffee"
   }
 , "vows":
