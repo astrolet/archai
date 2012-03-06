@@ -1,8 +1,6 @@
-require.paths.unshift(__dirname + "/../lib");
-
 vows =    require "vows"
 assert =  require "assert"
-Gaia =    require("gaia")
+Gaia =    require "../../lib/gaia"
 
 input =
   geo:

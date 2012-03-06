@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "astrology language interface"
 , "keywords": [ "astrology", "aslrolet", "commonjs" ]
-, "version": "0.0.1-6"
+, "version": "0.0.2"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -9,15 +9,17 @@
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "web" : "https://github.com/astrolet/lin/issues"
+  , "url" : "https://github.com/astrolet/lin/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "geoutils": "~0.1.0"
+  { "underscore": "1.x"
   , "massagist": "*"
+  , "geoutils": "~0.1.0"
+  , "jsonify": "*"
   }
 , "devDependencies":
   { "coffee-script": "*"
@@ -26,6 +28,7 @@
   , "watch-tree": "*"
   , "docco": "*"
   , "async": "*"
+  , "police": "*"
   }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]

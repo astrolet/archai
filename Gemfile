@@ -5,9 +5,15 @@
 
 source "http://rubygems.org"
 
+gem "git"
+gem "bcat"
+gem "omglog"
+gem "git-smart"
+
 gem "ronn"
 gem "serve"
 gem "growl"
 gem "livereload"
 gem "rb-fsevent"
 gem "terminitor"
+

@@ -1,0 +1,9 @@
+{ "vows":
+  { "alias":
+    { "silent": "--silent"
+    , "verbose": "--spec"
+    }
+  , "paths": ["vows"]
+  , "extension": ".spec.coffee"
+  }
+}
