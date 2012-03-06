@@ -96,6 +96,22 @@ task 'cs2js', "compiles coffee scripts", ->
     command "coffee -c #{cs}"
 
 
+# Get ready to deploy (everything).
+task 'build', "ready to push & deploy", ->
+  compile = (callback) ->
+    command "
+      npm install
+       && npm shrinkwrap
+       && cake cs2js
+      "
+    callback
+
+  parallel [
+    compile()
+    invoke 'docs'
+  ], (err) -> throw err if err
+
+
 option '-s', '--spec', 'Use Vows spec mode'
 option '-v', '--verbose', 'Verbose vows when necessary'
 
