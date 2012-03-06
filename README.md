@@ -5,23 +5,21 @@ lin -- (Astrology)<sup>*</sup> Library Interface
 
 Even big forests start with few trees:
 
-* ut(3)
+* degrees(3)
 * gaia(3)
+* ut(3)
 
 
 ## EXAMPLES
 
-Use `require("lin").Gaia;` for geo location / time.
+See `test/lib/*` usage specs for `require("lin").degrees;//`, etc.
 
 
 ## INSTALL
 
 With the [npm](http://npmjs.org/) prerequisite, do:
 
-    npm set npat true
     npm install lin
-
-The `npat` setting is to install the devDependencies and run the tests.  This is a development library.
 
 
 ## LICENSE
