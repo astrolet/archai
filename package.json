@@ -26,6 +26,7 @@
   , "watch-tree": "*"
   , "docco": "*"
   , "async": "*"
+  , "police": "*"
   }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]

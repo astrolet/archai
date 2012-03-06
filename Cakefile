@@ -1,5 +1,3 @@
-require.paths.unshift "#{__dirname}/node_modules"
-
 fs = require 'fs'
 docs = "#{__dirname}/docs"
 
@@ -9,6 +7,18 @@ inspect = require('eyes').inspector({stream: null, pretty: false, styles: {all: 
 watchTree = require('watch-tree').watchTree
 {series, parallel} = require 'async'
 
+
+# ANSI Terminal Colors.
+bold  = "\033[0;1m"
+red   = "\033[0;31m"
+green = "\033[0;32m"
+reset = "\033[0m"
+
+
+# Utility functions
+
+pleaseWait = ->
+  console.log "\n#{bold}this may take a while#{green} ...\n"
 
 print = (data) -> console.log data.toString().trim()
 
@@ -21,10 +31,39 @@ sh = (command) -> (k) -> exec command, k
 
 # Modified from https://gist.github.com/920698
 runCommand = (name, args) ->
-    proc = spawn name, args
-    proc.stderr.on 'data', (buffer) -> console.log buffer.toString()
-    proc.stdout.on 'data', (buffer) -> console.log buffer.toString()
-    proc.on 'exit', (status) -> process.exit(1) if status != 0
+  proc = spawn name, args
+  proc.stderr.on 'data', (buffer) -> console.log buffer.toString()
+  proc.stdout.on 'data', (buffer) -> console.log buffer.toString()
+  proc.on 'exit', (status) -> process.exit(1) if status != 0
+
+# shorthand to runCommand with
+command = (c, cb) ->
+  runCommand "sh", ["-c", c]
+  cb
+
+
+# Check if any node_modules or gems have become outdated.
+task 'outdated', "is all up-to-date?", ->
+  pleaseWait()
+  parallel [
+    command "npm outdated"
+    command "gem outdated"
+  ], (err) -> throw err if err
+
+
+# Usually follows `cake outdated`.
+task 'update', "latest node modules & ruby gems - the lazy way", ->
+  pleaseWait()
+  parallel [
+    command "npm update"
+    command "bundle update"
+  ], (err) -> throw err if err
+
+
+# It's the local police at the root of chartra.
+# Catches outdated modules that `cake outdated` doesn't report (major versions).
+task 'police', "checks npm package & dependencies with `police -l .`", ->
+  command "police -l ."
 
 
 option '-s', '--spec', 'Use Vows spec mode'
