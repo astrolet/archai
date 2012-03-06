@@ -23,6 +23,8 @@
   }
 , "devDependencies":
   { "coffee-script": "*"
+  , "should": "*"
+  , "mocha": "*"
   , "vows": "*"
   , "eyes": "*"
   , "watch-tree": "*"

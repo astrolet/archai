@@ -1,4 +1,10 @@
-{ "vows":
+{ "mocha":
+  { "alias":
+    { "verbose": "--reporter spec" }
+  , "paths": ["mocha"]
+  , "extension": ".spec.coffee"
+  }
+, "vows":
   { "alias":
     { "silent": "--silent"
     , "verbose": "--spec"

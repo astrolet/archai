@@ -1,0 +1,6 @@
+--require should
+--reporter tap
+--ui bdd
+--colors
+--growl
+
