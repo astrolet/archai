@@ -1,6 +1,6 @@
 vows =    require "vows"
 assert =  require "assert"
-Gaia =    require "../lib/gaia"
+Gaia =    require "../../lib/gaia"
 
 input =
   geo:

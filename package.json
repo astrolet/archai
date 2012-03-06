@@ -9,15 +9,17 @@
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "web" : "https://github.com/astrolet/lin/issues"
+  , "url" : "https://github.com/astrolet/lin/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "geoutils": "~0.1.0"
+  { "underscore": "1.x"
   , "massagist": "*"
+  , "geoutils": "~0.1.0"
+  , "jsonify": "*"
   }
 , "devDependencies":
   { "coffee-script": "*"

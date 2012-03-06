@@ -1,5 +1,9 @@
-fs = require 'fs'
+_    = require 'underscore'
+fs   = require 'fs'
+json = require 'jsonify'
+
 docs = "#{__dirname}/docs"
+test = "#{__dirname}/test"
 
 {basename, join} = require 'path'
 {exec, spawn} = require 'child_process'
@@ -112,20 +116,54 @@ task 'build', "ready to push & deploy", ->
   ], (err) -> throw err if err
 
 
-option '-s', '--spec', 'Use Vows spec mode'
-option '-v', '--verbose', 'Verbose vows when necessary'
+# Task options (for testing).
+option '-b', '--bcat', "\t pipe via `bcat` to the browser as if it's the console"
+option '-v', '--verbose', "\t verbose `cake test` option, pre-configured per test framework"
+option '-t', '--tests [TESTS]', "\t comma-delimited tests list: framework or path/ or path/part"
 
-task 'test', 'Test the app', (options) ->
 
-  args = [
-    'spec/test_gaia.coffee'
-  ]
-  args.unshift '--spec'     if options.spec
-  args.unshift '--verbose'  if options.verbose
+# Run all the tests.
+task 'test', "multi-framework tests", (options) ->
+  # test frameworks configuration
+  # constraint: everything in a path is run by a single unique framework
+  frameworks = json.parse fs.readFileSync "#{test}/frameworks.json", 'utf8'
 
-  vows = spawn 'vows', args
-  vows.stdout.on 'data', print
-  vows.stderr.on 'data', print
+  # build reverse index of framework lookup by path
+  paths = {}
+  for runner, config of frameworks
+    for path in config.paths
+      paths[path] = runner
+
+  # option defaults
+  options.silent = true unless options.verbose
+
+  # -t framework(s) or paths(s) override
+  tfp = options.tests
+  tfp = if tfp? then tfp.split(',') else _.keys frameworks
+
+  for fp in tfp
+    if fp.indexOf('/') is -1 # doesn't end in / (valid framework expectation)
+      runner = fp
+      unless frameworks[runner]?
+        console.log "Invalid '#{runner}' test framework."
+        continue # still run whatever else
+      config = frameworks[runner]
+      args = _.map config.paths, (path) -> "test/#{path}/*#{config.extension}"
+    else # it contains a path, verify it's valid & configure
+      path = fp.split('/')[0]
+      unless paths[path]?
+        console.log "Invalid test path: #{path}/."
+        continue # still run whatever else
+      runner = paths[path]
+      config = frameworks[runner]
+      args = ["test/#{fp}*#{config.extension}"]
+    for option in ["silent", "verbose"]
+      args.unshift config.alias[option] if options[option]?
+
+    # TODO: these should probably be combined - so there is one `| bcat` output.
+    execute = "NODE_ENV=#{options.env} ./node_modules/.bin/#{runner} #{args.join ' '}"
+    execute += " | bcat" if options.bcat?
+    command execute
 
 
 task 'assets:watch', 'Broken: watch source files and build lib/*.js & docs/', (options) ->
