@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "astrology language interface"
-, "keywords": [ "astrology", "aslrolet", "commonjs" ]
-, "version": "0.0.2"
+, "keywords": [ "astrology" ]
+, "version": "0.0.3-1"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -30,9 +30,9 @@
   , "async": "*"
   , "police": "*"
   }
-, "scripts": { "test": "cake -s test" }
+, "scripts": { "test": "cake test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
-, "engines" : { "node" : "0.4" }
+, "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":
   [ { "type": "Unlicense"
     , "url" : "http://unlicense.org/"
