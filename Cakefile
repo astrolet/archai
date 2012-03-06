@@ -46,6 +46,18 @@ command = (c, cb) ->
   cb
 
 
+# First-time setup.  Pygments is required by docco.
+task 'install', "Run once: npm, bundler, pygments, etc.", ->
+  pleaseWait()
+  command "
+    curl http://npmjs.org/install.sh | sh
+     && npm install
+     && gem install bundler
+     && bundle install
+     && sudo easy_install Pygments
+    "
+
+
 # Check if any node_modules or gems have become outdated.
 task 'outdated', "is all up-to-date?", ->
   pleaseWait()
