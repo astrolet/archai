@@ -1,6 +1,6 @@
 {
   "name": "lin",
-  "version": "0.0.1-6",
+  "version": "0.0.2-1",
   "dependencies": {
     "underscore": {
       "version": "1.3.1"
