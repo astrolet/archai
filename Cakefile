@@ -70,6 +70,14 @@ task 'police', "checks npm package & dependencies with `police -l .`", ->
   command "police -l ."
 
 
+# Literate programming for the coffee sources.
+task 'docs', "docco -- docs", ->
+  series [
+    sh "rm -rf #{docs}/"
+    command "find src | grep .coffee | xargs docco"
+  ], (err) -> throw err if err
+
+
 # Coffee to JS -- in addition to the `cake dev` watch / compiling.
 task 'cs2js', "compiles coffee scripts", ->
   for cs in cso
