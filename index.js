@@ -1,4 +1,12 @@
 // Exports
-exports.ut   = require("./lib/ut");
-exports.Gaia = require("./lib/gaia");
+[ 'degrees'
+, 'ut'
+, 'Gaia'
+].forEach(function(name) {
+  var path = './lib/' + name
+  var module = require(path);
+  for (var i in module) {
+    exports[i] = module[i];
+  }
+});
 
