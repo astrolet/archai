@@ -8,6 +8,10 @@ watchTree = require('watch-tree').watchTree
 {series, parallel} = require 'async'
 
 
+# Coffee-Scripts with Options. Appended to `coffee -c`, sometimes with `-w` too.
+cso = [ "-o lib src" ]
+
+
 # ANSI Terminal Colors.
 bold  = "\033[0;1m"
 red   = "\033[0;31m"
@@ -66,6 +70,12 @@ task 'police', "checks npm package & dependencies with `police -l .`", ->
   command "police -l ."
 
 
+# Coffee to JS -- in addition to the `cake dev` watch / compiling.
+task 'cs2js', "compiles coffee scripts", ->
+  for cs in cso
+    command "coffee -c #{cs}"
+
+
 option '-s', '--spec', 'Use Vows spec mode'
 option '-v', '--verbose', 'Verbose vows when necessary'
 
@@ -82,7 +92,7 @@ task 'test', 'Test the app', (options) ->
   vows.stderr.on 'data', print
 
 
-task 'assets:watch', 'Watch source files and build lib/*.js & docs/', (options) ->
+task 'assets:watch', 'Broken: watch source files and build lib/*.js & docs/', (options) ->
 
   compileCoffee = (callback) ->
     runCommand 'coffee', ['-wc', 'lib']
