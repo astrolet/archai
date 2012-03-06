@@ -3,10 +3,7 @@
 , 'ut'
 , 'Gaia'
 ].forEach(function(name) {
-  var path = './lib/' + name
-  var module = require(path);
-  for (var i in module) {
-    exports[i] = module[i];
-  }
+  var path = './lib/' + name;
+  exports[name] = require(path);
 });
 
