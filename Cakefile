@@ -58,7 +58,7 @@ task 'install', "Run once: npm, bundler, pygments, etc.", ->
      && npm install
      && gem install bundler
      && bundle install
-     && sudo easy_install Pygments
+     && easy_install Pygments
     "
 
 
@@ -105,7 +105,6 @@ task 'build', "ready to push & deploy", ->
   compile = (callback) ->
     command "
       npm install
-       && npm shrinkwrap
        && cake cs2js
       "
     callback
