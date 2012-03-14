@@ -83,6 +83,8 @@ class CelestialLongitude extends DegreesBase
   # See DegreesBase.
   abs: true # absolutely always positive
 
+  representations: ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓']
+
   # Longitude degrees are special.
   constructor: (@given) ->
     super @given
@@ -113,8 +115,8 @@ class CelestialLongitude extends DegreesBase
 
     switch more
       when undefined then rep
-      when "the", "top"
-        [rep, (@[more]() - (rep - 1) * 30)]
+      when "sym" then @representations[rep - 1]
+      when "the", "top" then [rep, (@[more]() - (rep - 1) * 30)]
       else @unimplemented "rep('#{more}')"
 
   representation: (more) ->

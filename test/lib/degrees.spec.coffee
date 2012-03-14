@@ -115,3 +115,8 @@ describe 'call degrees:', ->
     it 'the crab (4), 9 portions - with the lon method helper', ->
       degrees.lon(8.5, 4).rep('top').should.eql [4, 9]
 
+    it 'calling it with "sym" returns its unicode symbol', ->
+      degrees.lon(1).rep('sym').should.eql '♈'
+      degrees.lon(120).rep('sym').should.eql '♋'
+      degrees.lon(360).rep('sym').should.eql '♓'
+
