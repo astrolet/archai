@@ -103,12 +103,6 @@ class CelestialLongitude extends DegreesBase
   portion: ->
     @top()
 
-  # The returned [0..11, 0..29] is [representation, portion] array index.
-  # Perhaps not used - it doesn't hurt to keep it around for a while longer.
-  # It no longer has special logic but it does test `@rep 'top'` quite well.
-  idx: ->
-    [image, portion] = @rep 'top'
-    [--image, --portion]
 
   # The 1 to 12 for image / representation (modern "sign" number).
   # Request more and get a representation-first array, followed by that more,
@@ -123,9 +117,9 @@ class CelestialLongitude extends DegreesBase
         [rep, (@[more]() - (rep - 1) * 30)]
       else @unimplemented "rep('#{more}')"
 
-
   representation: (more) ->
     @rep(more)
+
 
   # The 12th part higher-level representation (1 to 12 again).
   _12: (exact = false) ->
