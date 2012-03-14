@@ -114,6 +114,9 @@ class CelestialLongitude extends DegreesBase
   # See DegreesBase.
   abs: true # absolutely always positive
 
+  # These are only for rep-based longitude, though alignment could be refactored
+  # for BaseDegrees as well - need to take into account variation of 1-3 digits.
+  aligns: false # set filler character to ' ' or '0' for dms() / str() alignment
   representations: ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓']
 
   # Longitude degrees are special.
@@ -125,6 +128,28 @@ class CelestialLongitude extends DegreesBase
     # unless @dec is 0 # the only way to have 0 is be given a 0 (no longer true)
     @dec %= 360 # smaller modulos can be done with `mod n` modification
     @dec = 360 if @dec is 0 # exact multiples of 360 equal 360 degrees, again
+
+
+  # Note that @rep aligns by default.  Set to '' (empty string) if not wanted.
+  align: (fill = ' ') ->
+    fill = "#{fill}" if _.isNumber fill # so that 0 doesn't have to be quoted
+    @aligns = fill # take any value, but the useful are 0, space, '' or false
+    @ # chain-able
+
+  # Longitude @dms function is special:
+  # * it cannot be negative (so it discards the sign)
+  # * it can be aligned with a prepended character - the [d,m,s] become strings
+  # The @aligns filling must be set (best by pre-chaining call of @align) and
+  # is consumed / cleared with @dms() use.
+  dms: ->
+    [n, d, m, s] = super()
+    if _.isString(@aligns)
+      @aligns = @aligns.charAt(0) if @aligns.length > 1
+      d = "#{@aligns}#{d}" if d < 10
+      m = "#{@aligns}#{m}" if m < 10
+      s = "#{@aligns}#{s}" if s < 10
+    @aligns = false
+    [d, m, s]
 
 
   # Is portion (or degree in modern parlance).
@@ -149,8 +174,11 @@ class CelestialLongitude extends DegreesBase
       when "sym" then @representations[rep - 1]
       when "str"
         rest = @dec - (rep - 1) * 30
-        [ n, d, m, s ] = degrees.of(rest).dms()
-        "#{@representations[rep - 1]} #{d}\u00B0#{m}\u2032#{s}\u2033"
+        # Pass on & reset the @aligns, or else align by default if not set.
+        # The usual false is ignored - so use blank '' in order to not align.
+        [a, @aligns] = [(if _.isString(@aligns) then @aligns else null), false]
+        [ d, m, s ] = degrees.lon(rest).align(a).dms()
+        "#{@representations[rep - 1]}  #{d}\u00B0#{m}\u2032#{s}\u2033"
       when "the", "top" then [rep, (@[more]() - (rep - 1) * 30)]
       else throw "Unsupported: rep('#{more}')"
 

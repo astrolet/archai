@@ -47,8 +47,8 @@ describe 'call degrees:', ->
       degrees.of([1, 2, 3]).dms().should.eql ['', 1, 2, 3]
 
     it "discards fractions from the dms array - javascript math issues", ->
-      degrees.lon([45.7, 30.5, 1]).dms().should.eql ['', 45, 30, 1]
-      degrees.lon([117, 23, 23.32]).dms().should.eql ['', 117, 23, 23]
+      degrees.lon([45.7, 30.5, 1]).dms().should.eql [45, 30, 1]
+      degrees.lon([117, 23, 23.32]).dms().should.eql [117, 23, 23]
 
     it "returns '-' (i.e. minus) for negative dms (at the 0 position)", ->
       degrees.of([120, 39, 59]).neg().dms().should.eql ['-', 120, 39, 59]
@@ -122,6 +122,13 @@ describe 'call degrees:', ->
 
 
   describe "longitude representation-relative dms", ->
-    it 'can show the symbol, followed by the remaining dms string' ,->
-      degrees.lon(98.60114469380143).rep('str').should.eql '♋ 8°36′4″'
+
+    it 'can show the symbol, followed by the remaining dms string default', ->
+      degrees.lon(98.60114469380143).rep('str').should.eql '♋   8°36′ 4″'
+
+    it 'can override the default alignment, by asking to not align at all', ->
+      degrees.lon(98.60114469380143).align('').rep('str').should.eql '♋  8°36′4″'
+
+    it 'can align using 0 (number padding) instead of the default (space)', ->
+      degrees.lon(98.60114469380143).align('0').rep('str').should.eql '♋  08°36′04″'
 
