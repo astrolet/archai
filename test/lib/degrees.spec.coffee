@@ -120,3 +120,8 @@ describe 'call degrees:', ->
       degrees.lon(120).rep('sym').should.eql '♋'
       degrees.lon(360).rep('sym').should.eql '♓'
 
+
+  describe "longitude representation-relative dms", ->
+    it 'can show the symbol, followed by the remaining dms string' ,->
+      degrees.lon(98.60114469380143).rep('str').should.eql '♋ 8°36′4″'
+

@@ -1,6 +1,37 @@
 _ = require 'underscore'
 
 
+class Degrees
+
+  # A Factory Method Class
+  of: (given , base = true) ->
+    switch base
+      when true then new DegreesBase given
+      when 'lon', 'longitude' then new CelestialLongitude given
+      else throw "Unknown kind of #{base} degrees."
+
+
+  # Alias for `@of x, 'lon'` - nice, short, consistent.
+  lon: (given, rep) ->
+    # Takes an optional representation - 1 for the Ram to 12 for the Fishes.
+    if rep?
+      if _.isNumber(rep) and 1 <= rep <= 12
+        rep = Math.floor rep
+        add = (rep - 1) * 30
+
+        if _.isNumber given then given += add
+        else if _.isArray given and _.isNumber given[0] then given[0] += add
+
+        # The degrees and representation must be numbers / valid.
+        else throw "The given #{given} degrees can't be added to."
+      else throw "Invalid representation #{rep}."
+
+    @of given, 'lon'
+
+# Sometimes using more than one degrees instance within this module too.
+degrees = new Degrees
+
+
 class DegreesBase
 
   # Unacceptable initial value.
@@ -116,8 +147,12 @@ class CelestialLongitude extends DegreesBase
     switch more
       when undefined then rep
       when "sym" then @representations[rep - 1]
+      when "str"
+        rest = @dec - (rep - 1) * 30
+        [ n, d, m, s ] = degrees.of(rest).dms()
+        "#{@representations[rep - 1]} #{d}\u00B0#{m}\u2032#{s}\u2033"
       when "the", "top" then [rep, (@[more]() - (rep - 1) * 30)]
-      else @unimplemented "rep('#{more}')"
+      else throw "Unsupported: rep('#{more}')"
 
   representation: (more) ->
     @rep(more)
@@ -129,33 +164,5 @@ class CelestialLongitude extends DegreesBase
     @unimplemented('p12')
 
 
-class Degrees
-
-  # A Factory Method Class
-  of: (given , base = true) ->
-    switch base
-      when true then new DegreesBase given
-      when 'lon', 'longitude' then new CelestialLongitude given
-      else throw "Unknown kind of #{base} degrees."
-
-
-  # Alias for `@of x, 'lon'` - nice, short, consistent.
-  lon: (given, rep) ->
-    # Takes an optional representation - 1 for the Ram to 12 for the Fishes.
-    if rep?
-      if _.isNumber(rep) and 1 <= rep <= 12
-        rep = Math.floor rep
-        add = (rep - 1) * 30
-
-        if _.isNumber given then given += add
-        else if _.isArray given and _.isNumber given[0] then given[0] += add
-
-        # The degrees and representation must be numbers / valid.
-        else throw "The given #{given} degrees can't be added to."
-      else throw "Invalid representation #{rep}."
-
-    @of given, 'lon'
-
-
-module.exports = new Degrees
+module.exports = degrees
 
