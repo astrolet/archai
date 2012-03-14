@@ -86,6 +86,17 @@ task 'police', "checks npm package & dependencies with `police -l .`", ->
   command "police -l ."
 
 
+# Development / workflow mode.
+# Ready to watch-compile coffee scripts from (and to) various places.
+# It could later do other things as well (e.g. build, serve & reload the docs/).
+task 'dev', "workflow convenience", ->
+  commands = []
+  for cs in cso
+    commands.push command "coffee -wc #{cs}"
+
+  parallel commands, (err) -> throw err if err
+
+
 # Literate programming for the coffee sources.
 task 'docs', "docco -- docs", ->
   series [
