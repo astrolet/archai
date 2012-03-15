@@ -175,6 +175,14 @@ class Ensemble extends Backbone.Collection
     @ # chainable
 
 
+  # Get an item via sid.  It matches numbers as strings.
+  # Returns `@getUnknown()` for *not found*.
+  # There will be ephemeris objects with no corresponding Ensemble items.
+  sid: (id) ->
+    found = @find (item) -> "#{item.get('sid')}" is "#{id}"
+    found ? @getUnknown()
+
+
   # TODO: this probably shouldn't return a new (copy), but a filtered collection
   # isn't a real collection with Underscore mixed in.  Would like to use
   # Backbone.Query, but it isn't a node module yet...

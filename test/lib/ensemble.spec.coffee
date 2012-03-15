@@ -35,3 +35,13 @@ describe "Ensemble:", ->
     it "currently not translated words are mixed in as English", ->
       ensemble.getUnknown().get('name').should.eql "Unknown"
 
+
+  describe "can also get an item", ->
+
+    it "with a sid (i.e. the Swiss Ephemeris ID) - either Number or its String equivalent", ->
+      ensemble.sid(0).get('id').should.eql 'SO'
+      ensemble.sid("0").get('id').should.eql 'SO'
+
+    it "with invalid sid - the result is @getUnknown()", ->
+      ensemble.sid(-1).get('id').should.eql '?'
+
