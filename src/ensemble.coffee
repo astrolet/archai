@@ -23,13 +23,13 @@ class Ensemble extends Backbone.Collection
     # 7. Greek Phonetic Name
     # 8. Name (added based on language and school preference)
     planets:
-      the: [ [ "Η", 25, 108, "MO", 1, "Asklēpios", "Selēnē" ]
-           , [ "Ε", 20,  76, "ME", 2, "Hermēs", "Hermēs" ]
-           , [ "Ι",  8,  82, "VE", 3, "Anubio", "Aphrodite" ]
-           , [ "Ω", 19, 120, "SO", 0, "Nechepsō & Petosiris", "Hēlios" ]
-           , [ "Α", 15,  66, "MA", 4, "Abramos", "Arēs" ]
-           , [ "Υ", 12,  79, "JU", 5, "Orpheus", "Zeus" ]
-           , [ "Ο", 30,  57, "SA", 6, "Kritodēmos", "Kronos" ]
+      the: [ [ "Η", 25, 108, "MO", 1, "☽", "Asklēpios", "Selēnē" ]
+           , [ "Ε", 20,  76, "ME", 2, "☿", "Hermēs", "Hermēs" ]
+           , [ "Ι",  8,  82, "VE", 3, "♀", "Anubio", "Aphrodite" ]
+           , [ "Ω", 19, 120, "SO", 0, "☉", "Nechepsō & Petosiris", "Hēlios" ]
+           , [ "Α", 15,  66, "MA", 4, "♂", "Abramos", "Arēs" ]
+           , [ "Υ", 12,  79, "JU", 5, "♃", "Orpheus", "Zeus" ]
+           , [ "Ο", 30,  57, "SA", 6, "♄", "Kritodēmos", "Kronos" ]
            ]
       add:
         traits: [ "planet", "dispositor" ]
@@ -40,19 +40,20 @@ class Ensemble extends Backbone.Collection
         use:
           "id": 3
           "sid": 4
+          "u": 5
           "name": null # the last (not there yet), added / set upon instantiation
           "minor": 1
           "major": 2
         # Related is for later - relations, etc.
         related:
           "vowel": 0
-          "founder": 5
-          "phonetic": 6
+          "founder": 6
+          "phonetic": 7
 
     # Dispositors that aren't planets.
     dispositors:
-      the: [ [ "NN", 11 ]
-           , [ "SN", null ]
+      the: [ [ "NN", "☊", 11 ]
+           , [ "SN", "☋", null ]
            ]
       add:
         traits: [ "dispositor" ]
@@ -60,7 +61,8 @@ class Ensemble extends Backbone.Collection
         key: "id"
         use:
           id: 0
-          sid: 1
+          sid: 2
+          u: 1
           name: null
 
     # System utility objects.  The spectrum of their meaning is TBD.
