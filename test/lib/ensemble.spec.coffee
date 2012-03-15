@@ -5,15 +5,19 @@ describe "Ensemble:", ->
 
   describe "the defaults include", ->
 
-    it "all the planets and dispositors (check for their Hindsight names)", ->
-      planets = [ 'Selene',
-                  'Hermes',
-                  'Aphrodite',
-                  'Helios',
-                  'Ares',
-                  'Zeus',
-                  'Kronos' ]
-      dispositors = _.union planets, [ 'North Node', 'South Node' ]
+    it "all the planets (icluding outers) and dispositors (use Hindsight names, if available)", ->
+      seven = [ 'Selene'
+              , 'Hermes'
+              , 'Aphrodite'
+              , 'Helios'
+              , 'Ares'
+              , 'Zeus'
+              , 'Kronos'
+              ]
+      planets = _.union seven, [ 'Uranus', 'Neptune', 'Pluto' ]
+      dispositors = _.union seven, [ 'North Node', 'South Node' ]
+
+      ensemble.seven().pluck('name').should.eql seven
       ensemble.planets().pluck('name').should.eql planets
       ensemble.dispositors().pluck('name').should.eql dispositors
 

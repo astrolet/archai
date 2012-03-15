@@ -32,7 +32,7 @@ class Ensemble extends Backbone.Collection
            , [ "Ο", 30,  57, "SA", 6, "♄", "Kritodēmos", "Kronos" ]
            ]
       add:
-        traits: [ "planet", "dispositor" ]
+        traits: [ "traditional", "planet", "dispositor" ]
       # The `planets.attributes.use`-ed by array index position -
       # do become instance data.
       attributes:
@@ -57,6 +57,22 @@ class Ensemble extends Backbone.Collection
            ]
       add:
         traits: [ "dispositor" ]
+      attributes:
+        key: "id"
+        use:
+          id: 0
+          sid: 2
+          u: 1
+          name: null
+
+    # Outer planets.
+    outers:
+      the: [ [ "UR", "♅", 7 ]
+           , [ "NE", "♆", 8 ]
+           , [ "PL", "♇", 9 ]
+           ]
+      add:
+        traits: [ "outer", "planet" ]
       attributes:
         key: "id"
         use:
@@ -132,6 +148,16 @@ class Ensemble extends Backbone.Collection
         name:
           en: [ true,             "South Node" ]
 
+      "UR":
+        name:
+          en: [ false,            "Uranus" ]
+      "NE":
+        name:
+          en: [ false,             "Neptune" ]
+      "PL":
+        name:
+          en: [ false,             "Pluto" ]
+
       "-":
         name:
           en: [ true,             "None" ]
@@ -192,7 +218,12 @@ class Ensemble extends Backbone.Collection
     new Backbone.Collection @filter (item) ->
       _.include item.attributes.traits, 'planet'
 
-  # Needs improvement, just like `@planets` does.
+  # The _'traditional' seven_.  Don't want to have a method for each traint...
+  seven: ->
+    new Backbone.Collection @filter (item) ->
+      _.include item.attributes.traits, 'traditional'
+
+  # Needs improvement, just like `@seven` and `@planets` do.
   # TODO: furthermore, these functions can be added to `@` automatically...
   # All that's needed is make sure the `@inits` keys match what the methods
   # should be called.
