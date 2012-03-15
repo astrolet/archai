@@ -17,6 +17,8 @@
 , "main": "index"
 , "dependencies":
   { "underscore": "1.x"
+  , "backbone": "0.5.x"
+  , "backbone-rel": "0.3.x"
   , "massagist": "*"
   , "geoutils": "~0.1.0"
   , "jsonify": "*"

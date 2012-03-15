@@ -1,5 +1,8 @@
 // Exports
 [ 'degrees'
+, 'Itemerge'
+, 'Ensemble'
+, 'polyglot'
 , 'ut'
 , 'Gaia'
 ].forEach(function(name) {
