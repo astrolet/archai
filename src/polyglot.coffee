@@ -27,7 +27,7 @@ _ = require "underscore"
 #     @translatable() is true
 
 
-polyglot = {
+module.exports = {
 
   ensure:
 
@@ -146,7 +146,4 @@ polyglot = {
       @ # chainable
 
 }
-
-
-module.exports = polyglot
 
