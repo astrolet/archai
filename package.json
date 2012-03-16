@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "astrology language interface"
 , "keywords": [ "astrology" ]
-, "version": "0.0.3-3"
+, "version": "0.0.4-1"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -20,7 +20,7 @@
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
   , "massagist": "*"
-  , "geoutils": "~0.1.0"
+  , "geoutils": "*"
   , "jsonify": "*"
   }
 , "devDependencies":
