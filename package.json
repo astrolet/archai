@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "astrology language interface"
 , "keywords": [ "astrology" ]
-, "version": "0.0.3-3"
+, "version": "0.0.4-1"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -9,7 +9,7 @@
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "url" : "https://github.com/astrolet/lin/issues"
+  , "url" : "https://www.pivotaltracker.com/projects/265847"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
@@ -17,8 +17,10 @@
 , "main": "index"
 , "dependencies":
   { "underscore": "1.x"
+  , "backbone": "0.5.x"
+  , "backbone-rel": "0.3.x"
   , "massagist": "*"
-  , "geoutils": "~0.1.0"
+  , "geoutils": "*"
   , "jsonify": "*"
   }
 , "devDependencies":

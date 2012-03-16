@@ -58,7 +58,7 @@ task 'install', "Run once: npm, bundler, pygments, etc.", ->
      && npm install
      && gem install bundler
      && bundle install
-     && sudo easy_install Pygments
+     && easy_install Pygments
     "
 
 
@@ -86,6 +86,17 @@ task 'police', "checks npm package & dependencies with `police -l .`", ->
   command "police -l ."
 
 
+# Development / workflow mode.
+# Ready to watch-compile coffee scripts from (and to) various places.
+# It could later do other things as well (e.g. build, serve & reload the docs/).
+task 'dev', "workflow convenience", ->
+  commands = []
+  for cs in cso
+    commands.push command "coffee -wc #{cs}"
+
+  parallel commands, (err) -> throw err if err
+
+
 # Literate programming for the coffee sources.
 task 'docs', "docco -- docs", ->
   series [
@@ -105,7 +116,6 @@ task 'build', "ready to push & deploy", ->
   compile = (callback) ->
     command "
       npm install
-       && npm shrinkwrap
        && cake cs2js
       "
     callback
@@ -224,14 +234,11 @@ task 'pages', "Build pages", ->
       (sh "rm doc/UNLICENSE.md")
     ], callback
 
-  buildAnnotations = (callback) ->
-    series [
-      invoke "docs"
-      (sh "cp -r docs pages/annotations")
-    ], callback
-
   build = (callback) ->
-    parallel [buildMan, buildAnnotations], callback
+    parallel [
+      buildMan
+      (sh "cake docs && cp -r docs pages/annotations")
+    ], callback
 
   series [
     (sh "if [ ! -d pages ] ; then mkdir pages ; fi") # mkdir pages only if it doesn't exist
