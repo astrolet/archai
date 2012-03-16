@@ -72,7 +72,7 @@ class Ensemble extends Backbone.Collection
            , [ "PL", "♇", 9 ]
            ]
       add:
-        traits: [ "outer", "planet" ]
+        traits: [ "modern", "outer", "planet" ]
       attributes:
         key: "id"
         use:
@@ -84,6 +84,10 @@ class Ensemble extends Backbone.Collection
     # Modern - besides *planets*.
     beyond:
       the: [ [ 15,     "Chiron"]
+           , [ 17,     "Ceres"]
+           , [ 18,     "Pallas"]
+           , [ 19,     "Juno"]
+           , [ 20,     "Vesta"]
            , [ 10128,  "Nemesis"]
            , [ 17066,  "Nessus"]
            , [ 30000,  "Varuna"]
@@ -172,10 +176,10 @@ class Ensemble extends Backbone.Collection
           en: [ false,            "Uranus" ]
       "NE":
         name:
-          en: [ false,             "Neptune" ]
+          en: [ false,            "Neptune" ]
       "PL":
         name:
-          en: [ false,             "Pluto" ]
+          en: [ false,            "Pluto" ]
 
       "-":
         name:
