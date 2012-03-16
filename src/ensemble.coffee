@@ -81,6 +81,25 @@ class Ensemble extends Backbone.Collection
           u: 1
           name: null
 
+    # Modern - besides *planets*.
+    beyond:
+      the: [ [ 15,     "Chiron"]
+           , [ 10128,  "Nemesis"]
+           , [ 17066,  "Nessus"]
+           , [ 30000,  "Varuna"]
+           , [ 60000,  "Quaoar"]
+           , [ 100377, "Sedna"]
+           , [ 146199, "Eris"]
+           ]
+      add:
+        traits: [ "modern", "outer" ]
+      attributes:
+        key: "id"
+        use:
+          id: 1
+          sid: 0
+          name: null
+
     # System utility objects.  The spectrum of their meaning is TBD.
     utility:
       the: [ [ "-", "Use through `@getNone`."]
@@ -178,6 +197,11 @@ class Ensemble extends Backbone.Collection
     if @cosmos?
       @school   = @cosmos.school
       @language = @cosmos.language
+
+    # Save some pointless typing.
+    # The id is the English name.
+    for item in @inits.beyond.the
+      @words.data[item[1]] = { name: { en: [ false, item[1] ] } }
 
     # Add `@words` translation.
     _.extend @, polyglot.ensure
