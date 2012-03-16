@@ -47,8 +47,8 @@ describe 'call degrees:', ->
       degrees.of([1, 2, 3]).dms().should.eql ['', 1, 2, 3]
 
     it "discards fractions from the dms array - javascript math issues", ->
-      degrees.lon([45.7, 30.5, 1]).dms().should.eql ['', 45, 30, 1]
-      degrees.lon([117, 23, 23.32]).dms().should.eql ['', 117, 23, 23]
+      degrees.lon([45.7, 30.5, 1]).dms().should.eql [45, 30, 1]
+      degrees.lon([117, 23, 23.32]).dms().should.eql [117, 23, 23]
 
     it "returns '-' (i.e. minus) for negative dms (at the 0 position)", ->
       degrees.of([120, 39, 59]).neg().dms().should.eql ['-', 120, 39, 59]
@@ -72,27 +72,6 @@ describe 'call degrees:', ->
 
     it "360.9 is portion 1", ->
       degrees.of(360.9, 'lon').top().should.eql 1
-
-
-  describe "when wanted longitude is 'idx', the given", ->
-
-    it "last possible portion (of the last image)", ->
-      degrees.of(360, 'lon').idx().should.eql [11, 29]
-
-    it "0 is again the last possible portion", ->
-      degrees.of(0, 'lon').idx().should.eql [11, 29]
-
-    it "first possible portion (of the first image)", ->
-      degrees.of(1, 'lon').idx().should.eql [0, 0]
-
-    it "last portion of any image, e.g. the Crab", ->
-      degrees.of(120, 'lon').idx().should.eql [3, 29]
-
-    it "59 degrees and some minutes - takes the last portion of the 2nd image", ->
-      degrees.of(59.23, 'lon').idx().should.eql [1, 29]
-
-    it 'the crab (4), 9 portions - with the lon factory method helper', ->
-      degrees.lon(8.5, 4).idx().should.eql [3, 8]
 
 
   describe "when wanted is 'rad', the given", ->
@@ -123,4 +102,33 @@ describe 'call degrees:', ->
 
     it "65.5 degrees is the 3rd representation, plus portion 6", ->
       degrees.of(65.5, 'lon').rep('top').should.eql [3, 6]
+
+    it "first possible portion (of the first image)", ->
+      degrees.of(1, 'lon').rep('top').should.eql [1, 1]
+
+    it "last portion of any image, e.g. the Crab", ->
+      degrees.of(120, 'lon').rep('top').should.eql [4, 30]
+
+    it "59 degrees + some minutes = the last portion of an image", ->
+      degrees.of(59.23, 'lon').rep('top').should.eql [2, 30]
+
+    it 'the crab (4), 9 portions - with the lon method helper', ->
+      degrees.lon(8.5, 4).rep('top').should.eql [4, 9]
+
+    it 'calling it with "sym" returns its unicode symbol', ->
+      degrees.lon(1).rep('sym').should.eql '♈'
+      degrees.lon(120).rep('sym').should.eql '♋'
+      degrees.lon(360).rep('sym').should.eql '♓'
+
+
+  describe "longitude representation-relative dms", ->
+
+    it 'can show the symbol, followed by the remaining dms string default', ->
+      degrees.lon(98.60114469380143).rep('str').should.eql '♋   8°36′ 4″'
+
+    it 'can override the default alignment, by asking to not align at all', ->
+      degrees.lon(98.60114469380143).align('').rep('str').should.eql '♋  8°36′4″'
+
+    it 'can align using 0 (number padding) instead of the default (space)', ->
+      degrees.lon(98.60114469380143).align('0').rep('str').should.eql '♋  08°36′04″'
 
