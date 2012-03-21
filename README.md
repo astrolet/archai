@@ -6,6 +6,7 @@ lin -- (Astrology)<sup>*</sup> Library Interface
 Even big forests start with few trees:
 
 * degrees(3)
+* coordinates(3)
 * itemerge(3)
 * ensemble(3)
 * polyglot(3)

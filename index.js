@@ -1,5 +1,6 @@
 // Exports
 [ 'degrees'
+, 'coordinates'
 , 'Itemerge'
 , 'Ensemble'
 , 'polyglot'
