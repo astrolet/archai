@@ -5,13 +5,21 @@ coordinates = require './coordinates'
 
 class Point extends Backbone.Model
 
-  initialize: (attributes) ->
-    attributes.lon ?= 0 # Note: this should perhaps be the default for degrees
-    @at = coordinates.of attributes.lon, attributes.lat
-    attributes.lat = @at.lat.dec unless attributes.lat? # latitude default of 0
-    attributes.timeshift ?= null
-    attributes.reason    ?= null
-    @set attributes
+  # Note: 0 should perhaps be the default for degrees?
+  atCoordinates: (lon = 0, lat) ->
+    @at = coordinates.of @get("lon") ? lon, @get("lat") ? lat
+    @at.ecliptical 'dec'
+
+  initialize: (a) ->
+    [a.lon, a.lat] = @atCoordinates a.lon, a.lat
+    a.timeshift ?= null
+    a.reason    ?= null
+    @set a
+
+    # TODO: with a newer Backbone,
+    # `@on "change:lon change:lat", @atCoordinates` instead.
+    @bind "change:lon", @atCoordinates
+    @bind "change:lat", @atCoordinates
 
 
 class Points extends Backbone.Collection
