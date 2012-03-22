@@ -1,3 +1,4 @@
+_       = require 'underscore'
 degrees = require './degrees'
 
 
@@ -27,11 +28,10 @@ class CelestialCoordinates
     @lat = degrees.of lat
 
   # A shortcut for getting both longitude and latitude with one call.<br/>
-  # TODO: take parameters with the first being a function name, and
-  # the rest of the parameters pased to the function.  Constrain to
-  # methods common among the 2 types of degrees.
-  ecliptical: ->
-    [@lon, @lat]
+  # TODO: pass the `rest` as function parameters.  Contribute to Backbone,
+  # or impelement my own `result` - it's easier with CoffeeScript...
+  ecliptical: (r, rest...) ->
+    if r? then [_.result(@lon, r), _.result(@lat, r)] else [@lon, @lat]
 
 
 module.exports = new Coordinates

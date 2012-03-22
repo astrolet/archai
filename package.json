@@ -34,7 +34,10 @@
   , "async": "*"
   , "police": "*"
   }
-, "scripts": { "test": "make test" }
+, "scripts":
+  { "test": "make test"
+  , "preinstall": "npm install https://github.com/documentcloud/underscore/tarball/master"
+  }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":
