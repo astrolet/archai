@@ -28,10 +28,11 @@ class Points extends Backbone.Collection
   model: Point
 
   initialize: (models = [], options = {}) ->
-    models = @precious options.data if _.isEmpty models
+    models = @precious options if _.isEmpty models
     @reset models
 
-  precious: (json) ->
+  precious: (options) ->
+    [json, settings] = [options.data, options.settings]
     return [] unless json?
     [objs, idx] = [[], 0]
     for i, group of json
@@ -53,6 +54,28 @@ class Points extends Backbone.Collection
               sid: sid
             for key, val of it
               objs[idx][keys[key]] = val
+            idx++
+        when '3'
+          # Adding the frontal so many.
+          keys = ["AS", "MC", "ARMC", "VX", "EQAS"]
+          for num, val of group
+            if keys[num]?
+              objs.push
+                id: "#{[keys[num]]}"
+                sid: null
+                lon: val
+                day_lon: null
+              idx++
+        when '4'
+          keys = []
+          keys.push "H#{count}" for count in [1..12]
+          for num, val of group
+            objs.push
+              id: "#{[keys[num]]}"
+              sid: null
+              lon: val
+              day_lon: null
+              re: settings.houses if settings?.houses? # TODO: full system name
             idx++
     objs
 
