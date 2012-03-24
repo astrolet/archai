@@ -57,6 +57,7 @@ class Points extends Backbone.Collection
             idx++
         when '3'
           # Adding the frontal so many.
+          # TODO: check if all of these are on the ecliptic (i.e. lon values)
           keys = ["AS", "MC", "ARMC", "VX", "EQAS"]
           for num, val of group
             if keys[num]?
@@ -68,6 +69,7 @@ class Points extends Backbone.Collection
               idx++
         when '4'
           keys = []
+          # TODO: whole-sign houses should use T for topics
           keys.push "H#{count}" for count in [1..12]
           for num, val of group
             objs.push

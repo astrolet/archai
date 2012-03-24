@@ -231,6 +231,10 @@ class Ensemble extends Backbone.Collection
     @ # chainable
 
 
+  # A more gracious (no `undefined`) `@get` - without overriding it.
+  id: (id) -> (@get id) ? @getUnknown()
+
+
   # Get an item via sid.  It matches numbers as strings.
   # Returns `@getUnknown()` for *not found*.
   # There will be ephemeris objects with no corresponding Ensemble items.
