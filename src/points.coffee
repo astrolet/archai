@@ -69,8 +69,9 @@ class Points extends Backbone.Collection
               idx++
         when '4'
           keys = []
-          # TODO: whole-sign houses should use T for topics
-          keys.push "H#{count}" for count in [1..12]
+          for count in [1..12]
+            # Whole-sign houses start with 'T' for topics, all others with 'H'.
+            keys.push "#{if settings.houses is 'W' then 'T' else 'H'}#{count}"
           for num, val of group
             objs.push
               id: "#{[keys[num]]}"
