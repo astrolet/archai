@@ -65,6 +65,22 @@ class Ensemble extends Backbone.Collection
           u: 1
           name: null
 
+    # Angles.
+    dispositors:
+      the: [ [ "AS", "⇠" ]
+           , [ "MC", "⇡" ]
+           , [ "DS", "⇢" ]
+           , [ "IC", "⇣" ]
+           ]
+      add:
+        traits: [ "angle" ]
+      attributes:
+        key: "id"
+        use:
+          id: 0
+          u: 1
+          name: null
+
     # Outer planets.
     outers:
       the: [ [ "UR", "♅", 7 ]
@@ -170,6 +186,19 @@ class Ensemble extends Backbone.Collection
       "SN":
         name:
           en: [ true,             "South Node" ]
+
+      "AS":
+        name:
+          en: [ false,             "Ascendant" ]
+      "MC":
+        name:
+          en: [ false,             "Midheaven" ]
+      "DS":
+        name:
+          en: [ false,             "Descendant" ]
+      "IC":
+        name:
+          en: [ false,             "Imum Coeli" ]
 
       "UR":
         name:
