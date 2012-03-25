@@ -78,9 +78,28 @@ class Points extends Backbone.Collection
               sid: null
               lon: val
               day_lon: null
-              re: settings.houses if settings?.houses? # TODO: full system name
+              re: @houses[settings?.houses]
             idx++
     objs
+
+  # Minimal lowercase tags, a reason.
+  houses: { "P": "placidus"
+          , "K": "koch"
+          , "O": "porphyrius"
+          , "R": "regiomontanus"
+          , "C": "campanus"
+          , "A": "ascendant"
+          , "E": "equal"
+          , "V": "vehlow-equal"
+          , "W": "whole-sign"
+          , "X": "axial-rotation"
+          , "H": "horizontal"
+          , "T": "topocentric"
+          , "B": "alcabitus"
+          , "M": "morinus"
+          , "U": "krusinski-pisa"
+          , "G": "gauquelin-sectors"
+          }
 
   # The first point or the @getNone id of Ensemble.
   a: -> @at(0) ? new Point id: '-'
