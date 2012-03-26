@@ -99,17 +99,17 @@ class Ensemble extends Backbone.Collection
 
     # Modern - besides *planets*.
     beyond:
-      the: [ [ 15,     "Chiron"]
-           , [ 17,     "Ceres"]
-           , [ 18,     "Pallas"]
-           , [ 19,     "Juno"]
-           , [ 20,     "Vesta"]
-           , [ 10128,  "Nemesis"]
-           , [ 17066,  "Nessus"]
-           , [ 30000,  "Varuna"]
-           , [ 60000,  "Quaoar"]
-           , [ 100377, "Sedna"]
-           , [ 146199, "Eris"]
+      the: [ [ 15,     "Chiron",    "\u26B7"]
+           , [ 17,     "Ceres",     "\u26B3"]
+           , [ 18,     "Pallas",    "\u26B4"]
+           , [ 19,     "Juno",      "\u26B5"]
+           , [ 20,     "Vesta",     "\u26B6"]
+           , [ 10128,  "Nemesis",   ""]
+           , [ 17066,  "Nessus",    ""]
+           , [ 30000,  "Varuna",    ""]
+           , [ 60000,  "Quaoar",    ""]
+           , [ 100377, "Sedna",     ""]
+           , [ 146199, "Eris",      ""]
            ]
       add:
         traits: [ "modern", "outer" ]
