@@ -58,7 +58,12 @@ class Points extends Backbone.Collection
         when '3'
           # Adding the frontal so many.
           # TODO: check if all of these are on the ecliptic (i.e. lon values)
-          keys = ["AS", "MC", "ARMC", "VX", "EQAS"]
+          # Also see if all of them are to be used and if in order - whitelist?
+          # For example we may just want the Vertex from the following:
+          # `"ARMC", "VX", "EQAS"`.  Furthermore, we may want some angles
+          # for calculations / inference, but not to show - in which case
+          # it would be Eden's (i.e. `eden -o phase`) whitelist.
+          keys = ["AS", "MC"]
           for num, val of group
             if keys[num]?
               objs.push
