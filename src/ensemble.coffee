@@ -61,12 +61,12 @@ class Ensemble extends Backbone.Collection
         key: "id"
         use:
           id: 0
-          sid: 2
           u: 1
           name: null
+          sid: 2
 
     # Angles.
-    dispositors:
+    angles:
       the: [ [ "AS", "⇠" ]
            , [ "MC", "⇡" ]
            , [ "DS", "⇢" ]
