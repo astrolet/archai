@@ -1,5 +1,6 @@
-lin -- (Astrology)<sup>*</sup> Library Interface
-==================================
+# [![Build Status](https://secure.travis-ci.org/astrolet/lin.png)](http://travis-ci.org/astrolet/lin)
+# lin -- (Astrology)<sup>*</sup> Library Interface
+
 
 ## DESCRIPTION
 

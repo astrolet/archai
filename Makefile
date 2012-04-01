@@ -1,5 +1,5 @@
 TESTS = test/lib/*.coffee
-REPORTER = progress
+REPORTER = landing
 
 test:
 	@NODE_ENV=test ./node_modules/.bin/mocha \

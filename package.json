@@ -35,7 +35,7 @@
   , "police": "*"
   }
 , "scripts":
-  { "test": "cake -s test"
+  { "test": "make test"
   , "preinstall": "npm install https://github.com/documentcloud/underscore/tarball/master"
   }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
