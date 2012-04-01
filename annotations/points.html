@@ -1,0 +1,99 @@
+<!DOCTYPE html>  <html> <head>   <title>points.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="coordinates.html">                 coordinates.coffee               </a>                                           <a class="source" href="degrees.html">                 degrees.coffee               </a>                                           <a class="source" href="ensemble.html">                 ensemble.coffee               </a>                                           <a class="source" href="gaia.html">                 gaia.coffee               </a>                                           <a class="source" href="itemerge.html">                 itemerge.coffee               </a>                                           <a class="source" href="points.html">                 points.coffee               </a>                                           <a class="source" href="polyglot.html">                 polyglot.coffee               </a>                                           <a class="source" href="ut.html">                 ut.coffee               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               points.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="nv">_             = </span><span class="nx">require</span> <span class="s1">&#39;underscore&#39;</span>
+<span class="nv">Backbone      = </span><span class="nx">require</span> <span class="s1">&#39;backbone&#39;</span>
+<span class="nv">coordinates   = </span><span class="nx">require</span> <span class="s1">&#39;./coordinates&#39;</span>
+<span class="nv">ensemble = </span><span class="k">new</span> <span class="p">(</span><span class="nx">require</span> <span class="s1">&#39;./ensemble&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nx">Point</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Note: 0 should perhaps be the default for degrees?</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">atCoordinates: </span><span class="nf">(lon = 0, lat) -&gt;</span>
+    <span class="vi">@at = </span><span class="nx">coordinates</span><span class="p">.</span><span class="k">of</span> <span class="nx">@get</span><span class="p">(</span><span class="s2">&quot;lon&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nx">lon</span><span class="p">,</span> <span class="nx">@get</span><span class="p">(</span><span class="s2">&quot;lat&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nx">lat</span>
+    <span class="nx">@at</span><span class="p">.</span><span class="nx">ecliptical</span> <span class="s1">&#39;dec&#39;</span>
+
+  <span class="nv">initialize: </span><span class="nf">(a) -&gt;</span>
+    <span class="p">[</span><span class="nx">a</span><span class="p">.</span><span class="nx">lon</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">lat</span><span class="p">]</span> <span class="o">=</span> <span class="nx">@atCoordinates</span> <span class="nx">a</span><span class="p">.</span><span class="nx">lon</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">lat</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">re</span> <span class="o">?=</span> <span class="s1">&#39;&#39;</span> <span class="c1"># regarding reason</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">ts</span> <span class="o">?=</span> <span class="s1">&#39;&#39;</span> <span class="c1"># timeshift - more, related moments</span>
+    <span class="nx">@set</span> <span class="nx">a</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>TODO: with a newer Backbone,
+<code>@on "change:lon change:lat", @atCoordinates</code> instead.</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">@bind</span> <span class="s2">&quot;change:lon&quot;</span><span class="p">,</span> <span class="nx">@atCoordinates</span>
+    <span class="nx">@bind</span> <span class="s2">&quot;change:lat&quot;</span><span class="p">,</span> <span class="nx">@atCoordinates</span>
+
+
+<span class="k">class</span> <span class="nx">Points</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span>
+
+  <span class="nv">model: </span><span class="nx">Point</span>
+
+  <span class="nv">initialize: </span><span class="nf">(models = [], options = {}) -&gt;</span>
+    <span class="nv">models = </span><span class="nx">@precious</span> <span class="nx">options</span> <span class="k">if</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span> <span class="nx">models</span>
+    <span class="nx">@reset</span> <span class="nx">models</span>
+
+  <span class="nv">precious: </span><span class="nf">(options) -&gt;</span>
+    <span class="p">[</span><span class="nx">json</span><span class="p">,</span> <span class="nx">settings</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">settings</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[]</span> <span class="nx">unless</span> <span class="nx">json</span><span class="o">?</span>
+    <span class="p">[</span><span class="nx">objs</span><span class="p">,</span> <span class="nx">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[],</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">group</span> <span class="k">of</span> <span class="nx">json</span>
+      <span class="k">switch</span> <span class="nx">i</span>
+        <span class="k">when</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span>
+          <span class="nv">keys =</span>
+            <span class="mi">0</span><span class="o">:</span> <span class="s2">&quot;lon&quot;</span>
+            <span class="mi">1</span><span class="o">:</span> <span class="s2">&quot;lat&quot;</span>
+            <span class="mi">2</span><span class="o">:</span> <span class="s2">&quot;dau&quot;</span>
+            <span class="mi">3</span><span class="o">:</span> <span class="s2">&quot;day_lon&quot;</span>
+            <span class="mi">4</span><span class="o">:</span> <span class="s2">&quot;day_lat&quot;</span>
+            <span class="mi">5</span><span class="o">:</span> <span class="s2">&quot;day_dau&quot;</span>
+          <span class="k">for</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">it</span> <span class="k">of</span> <span class="nx">group</span>
+            <span class="nv">sid = </span><span class="k">if</span> <span class="nx">i</span> <span class="o">is</span> <span class="s2">&quot;2&quot;</span> <span class="k">then</span> <span class="s2">&quot;#{10000 + new Number(id)}&quot;</span> <span class="k">else</span> <span class="nx">id</span>
+            <span class="nv">item = </span><span class="nx">ensemble</span><span class="p">.</span><span class="nx">sid</span> <span class="nx">sid</span>
+            <span class="nv">its = </span><span class="nx">item</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+            <span class="nx">objs</span><span class="p">.</span><span class="nx">push</span>
+              <span class="nv">id: </span><span class="k">if</span> <span class="nx">its</span> <span class="o">is</span> <span class="s1">&#39;?&#39;</span> <span class="k">then</span> <span class="nx">sid</span> <span class="k">else</span> <span class="nx">its</span>
+              <span class="nv">sid: </span><span class="nx">sid</span>
+            <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">it</span>
+              <span class="nx">objs</span><span class="p">[</span><span class="nx">idx</span><span class="p">][</span><span class="nx">keys</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">val</span>
+            <span class="nx">idx</span><span class="o">++</span>
+        <span class="k">when</span> <span class="s1">&#39;3&#39;</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Adding the frontal so many.
+TODO: check if all of these are on the ecliptic (i.e. lon values)
+Also see if all of them are to be used and if in order - whitelist?
+For example we may just want the Vertex from the following:
+<code>"ARMC", "VX", "EQAS"</code>.  Furthermore, we may want some angles
+for calculations / inference, but not to show - in which case
+it would be Eden's (i.e. <code>eden -o phase</code>) whitelist.</p>             </td>             <td class="code">               <div class="highlight"><pre>          <span class="nv">keys = </span><span class="p">[</span><span class="s2">&quot;AS&quot;</span><span class="p">,</span> <span class="s2">&quot;MC&quot;</span><span class="p">]</span>
+          <span class="k">for</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">group</span>
+            <span class="k">if</span> <span class="nx">keys</span><span class="p">[</span><span class="nx">num</span><span class="p">]</span><span class="o">?</span>
+              <span class="nx">objs</span><span class="p">.</span><span class="nx">push</span>
+                <span class="nv">id: </span><span class="s2">&quot;#{[keys[num]]}&quot;</span>
+                <span class="nv">sid: </span><span class="kc">null</span>
+                <span class="nv">lon: </span><span class="nx">val</span>
+                <span class="nv">day_lon: </span><span class="kc">null</span>
+              <span class="nx">idx</span><span class="o">++</span>
+        <span class="k">when</span> <span class="s1">&#39;4&#39;</span>
+          <span class="nv">keys = </span><span class="p">[]</span>
+          <span class="k">for</span> <span class="nx">count</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">12</span><span class="p">]</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Whole-sign houses start with 'T' for topics, all others with 'H'.</p>             </td>             <td class="code">               <div class="highlight"><pre>            <span class="nx">keys</span><span class="p">.</span><span class="nx">push</span> <span class="s2">&quot;#{if settings.houses is &#39;W&#39; then &#39;T&#39; else &#39;H&#39;}#{count}&quot;</span>
+          <span class="k">for</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">group</span>
+            <span class="nx">objs</span><span class="p">.</span><span class="nx">push</span>
+              <span class="nv">id: </span><span class="s2">&quot;#{[keys[num]]}&quot;</span>
+              <span class="nv">sid: </span><span class="kc">null</span>
+              <span class="nv">lon: </span><span class="nx">val</span>
+              <span class="nv">day_lon: </span><span class="kc">null</span>
+              <span class="nv">re: </span><span class="nx">@houses</span><span class="p">[</span><span class="nx">settings</span><span class="o">?</span><span class="p">.</span><span class="nx">houses</span><span class="p">]</span>
+            <span class="nx">idx</span><span class="o">++</span>
+    <span class="nx">objs</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>Minimal lowercase tags, a reason.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">houses: </span><span class="p">{</span> <span class="s2">&quot;P&quot;</span><span class="o">:</span> <span class="s2">&quot;placidus&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="o">:</span> <span class="s2">&quot;koch&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="o">:</span> <span class="s2">&quot;porphyrius&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="o">:</span> <span class="s2">&quot;regiomontanus&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="o">:</span> <span class="s2">&quot;campanus&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="o">:</span> <span class="s2">&quot;ascendant&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="o">:</span> <span class="s2">&quot;equal&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="o">:</span> <span class="s2">&quot;vehlow-equal&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="o">:</span> <span class="s2">&quot;whole-sign&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="o">:</span> <span class="s2">&quot;axial-rotation&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="o">:</span> <span class="s2">&quot;horizontal&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="o">:</span> <span class="s2">&quot;topocentric&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="o">:</span> <span class="s2">&quot;alcabitus&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="o">:</span> <span class="s2">&quot;morinus&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;U&quot;</span><span class="o">:</span> <span class="s2">&quot;krusinski-pisa&quot;</span>
+          <span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="o">:</span> <span class="s2">&quot;gauquelin-sectors&quot;</span>
+          <span class="p">}</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>The first point or the @getNone id of Ensemble.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">a: </span><span class="o">-&gt;</span> <span class="nx">@at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="k">new</span> <span class="nx">Point</span> <span class="nv">id: </span><span class="s1">&#39;-&#39;</span>
+
+
+<span class="nv">module.exports = </span><span class="nx">Points</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
