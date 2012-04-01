@@ -128,6 +128,7 @@ task 'build', "ready to push & deploy", ->
 
 # Task options (for testing).
 option '-b', '--bcat', "\t pipe via `bcat` to the browser as if it's the console"
+option '-s', '--silent', "\t the tests are pretty quiet"
 option '-v', '--verbose', "\t verbose `cake test` option, pre-configured per test framework"
 option '-t', '--tests [TESTS]', "\t comma-delimited tests list: framework or path/ or path/part"
 
@@ -145,7 +146,7 @@ task 'test', "multi-framework tests", (options) ->
       paths[path] = runner
 
   # option defaults
-  options.silent = true unless options.verbose
+  options.neutral = true unless options.verbose or options.silent
 
   # -t framework(s) or paths(s) override
   tfp = options.tests
@@ -167,7 +168,7 @@ task 'test', "multi-framework tests", (options) ->
       runner = paths[path]
       config = frameworks[runner]
       args = ["test/#{fp}*#{config.extension}"]
-    for option in ["silent", "verbose"]
+    for option in ["silent", "neutral", "verbose"]
       args.unshift config.alias[option] if options[option]?
 
     # TODO: these should probably be combined - so there is one `| bcat` output.

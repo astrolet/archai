@@ -1,18 +1,24 @@
-lin -- (Astrology)<sup>*</sup> Library Interface
-==================================
+# [![Build Status](https://secure.travis-ci.org/astrolet/lin.png)](http://travis-ci.org/astrolet/lin)
+# lin -- (Astrology)<sup>*</sup> Library Interface
+
 
 ## DESCRIPTION
 
 Even big forests start with few trees:
 
 * degrees(3)
+* coordinates(3)
+* points(3)
+* itemerge(3)
+* ensemble(3)
+* polyglot(3)
 * gaia(3)
 * ut(3)
 
 
 ## EXAMPLES
 
-See `test/lib/*` usage specs for `require("lin").degrees;//`, etc.
+See `test` for specs / example use.
 
 
 ## INSTALL

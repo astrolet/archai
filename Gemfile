@@ -9,6 +9,7 @@ gem "git"
 gem "bcat"
 gem "omglog"
 gem "git-smart"
+gem "travis-lint"
 
 gem "ronn"
 gem "serve"
