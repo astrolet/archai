@@ -16,23 +16,16 @@ watchTree = require('watch-tree').watchTree
 cso = [ "-o lib src" ]
 
 
-# ANSI Terminal Colors.
-bold  = "\033[0;1m"
-red   = "\033[0;31m"
-green = "\033[0;32m"
-reset = "\033[0m"
-
-
 # Utility functions
 
 pleaseWait = ->
-  console.log "\n#{bold}this may take a while#{green} ...\n"
+  console.log "\nThis may take a while...\n"
 
 print = (data) -> console.log data.toString().trim()
 
 handleError = (err) ->
   if err
-    console.log "\n\033[1;36m=>\033[1;37m Remember you need to `npm install` the package.json devDependencies and also `bundle install`.\033[0;37m\n"
+    console.log "\nUnexpected error!\nHave you done `cake install`?\n"
     console.log err.stack
 
 sh = (command) -> (k) -> exec command, k
