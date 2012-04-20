@@ -35,10 +35,7 @@
   , "async": "*"
   , "police": "*"
   }
-, "scripts":
-  { "test": "cake -s test"
-  , "preinstall": "npm install https://github.com/documentcloud/underscore/tarball/master"
-  }
+, "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":
