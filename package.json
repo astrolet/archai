@@ -22,18 +22,17 @@
   , "backbone-rel": "0.3.x"
   , "massagist": "*"
   , "geoutils": "*"
-  , "jsonify": "*"
   }
 , "devDependencies":
   { "coffee-script": "*"
+  , "jsonify": "*"
+  , "police": "*"
   , "should": "*"
   , "mocha": "*"
-  , "vows": "*"
-  , "eyes": "*"
-  , "watch-tree": "*"
-  , "docco": "*"
   , "async": "*"
-  , "police": "*"
+  , "docco": "*"
+  , "eyes": "*"
+  , "vows": "*"
   }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]

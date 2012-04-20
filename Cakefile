@@ -7,9 +7,12 @@ test = "#{__dirname}/test"
 
 {basename, join} = require 'path'
 {exec, spawn} = require 'child_process'
-inspect = require('eyes').inspector({stream: null, pretty: false, styles: {all: 'magenta'}})
-watchTree = require('watch-tree').watchTree
 {series, parallel} = require 'async'
+inspect = require('eyes').inspector
+  stream: null
+  pretty: false
+  styles:
+    all: 'magenta'
 
 
 # Coffee-Scripts with Options. Appended to `coffee -c`, sometimes with `-w` too.
@@ -47,8 +50,7 @@ command = (c, cb) ->
 task 'install', "Run once: npm, bundler, pygments, etc.", ->
   pleaseWait()
   command "
-    curl http://npmjs.org/install.sh | sh
-     && npm install
+    npm install
      && gem install bundler
      && bundle install
      && easy_install Pygments
@@ -168,40 +170,6 @@ task 'test', "multi-framework tests", (options) ->
     execute = "NODE_ENV=#{options.env} ./node_modules/.bin/#{runner} #{args.join ' '}"
     execute += " | bcat" if options.bcat?
     command execute
-
-
-task 'assets:watch', 'Broken: watch source files and build lib/*.js & docs/', (options) ->
-
-  compileCoffee = (callback) ->
-    runCommand 'coffee', ['-wc', 'lib']
-
-  watchStuff = (callback) ->
-    watch_rate = 100 #ms
-    watch_info =
-      1:
-        path: "lib"
-        options:
-          'match': '.+\.coffee'
-        events: ["filePreexisted", "fileCreated", "fileModified"]
-        callback: -> console.log "you can't call me"
-
-    # NOTE: it would be nice if the watch_info[n].callback could be called
-    # ... and if we knew which event fired it - perhaps there is a way?
-
-    watcher = {}
-    for item, stuff of watch_info
-      stuff.options['sample-rate'] = watch_rate
-      for event in stuff.events
-        watcher["#{item}-#{event}"] = watchTree(stuff.path, stuff.options)
-        watcher["#{item}-#{event}"].on event, (what, stats) ->
-          console.log what + ' - is being documented (due to some event), stats: ' + inspect(stats)
-          if what.match /(.*)\/[^\/]+\.coffee$/ then runCommand 'docco', [what]
-          else console.log "unrecognized file type of #{what}"
-
-  series [
-    (sh "rm -rf #{docs}/")
-    parallel [compileCoffee, watchStuff]
-  ], (err) -> throw err if err
 
 
 # Build manuals / gh-pages almost exactly like https://github.com/josh/nack does
