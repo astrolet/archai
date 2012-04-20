@@ -1,6 +1,5 @@
 // Exports
 [ 'Points'
-, 'Itemerge'
 , 'Ensemble'
 , 'polyglot'
 , 'Gaia'

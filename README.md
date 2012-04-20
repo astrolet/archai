@@ -7,10 +7,8 @@
 Even big forests start with few trees:
 
 * points(3)
-* itemerge(3)
 * ensemble(3)
 * polyglot(3)
-* gaia(3)
 
 
 ## EXAMPLES
