@@ -1,11 +1,8 @@
 // Exports
-[ 'degrees'
-, 'coordinates'
-, 'Points'
+[ 'Points'
 , 'Itemerge'
 , 'Ensemble'
 , 'polyglot'
-, 'ut'
 , 'Gaia'
 ].forEach(function(name) {
   var path = './lib/' + name.toLowerCase();

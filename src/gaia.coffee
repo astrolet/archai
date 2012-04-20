@@ -1,4 +1,4 @@
-ut      = require("./ut")
+ut      = require("upon").ut
 _       = require("massagist")._
 Geo     = require("geoutils").Geo
 LatLon  = require("geoutils").LatLon

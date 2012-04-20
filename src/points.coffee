@@ -1,6 +1,6 @@
 _             = require 'underscore'
 Backbone      = require 'backbone'
-coordinates   = require './coordinates'
+coordinates   = require('upon').coordinates
 ensemble = new (require './ensemble')
 
 
