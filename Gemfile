@@ -1,6 +1,6 @@
 # `gem install bundler && bundle install`
 
-source "http://rubygems.org"
+source :rubygems
 
 gem "git"
 gem "bcat"
