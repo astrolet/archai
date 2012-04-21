@@ -1,11 +1,8 @@
 # annotations
-degrees(3)          annotations/degrees
-coordinates(3)      annotations/coordinates
 points(3)           annotations/points
 itemerge(3)         annotations/itemerge
 ensemble(3)         annotations/ensemble
 polyglot(3)         annotations/polyglot
-ut(3)               annotations/ut
 gaia(3)             annotations/gaia
 
 # external manuals

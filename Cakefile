@@ -7,32 +7,28 @@ test = "#{__dirname}/test"
 
 {basename, join} = require 'path'
 {exec, spawn} = require 'child_process'
-inspect = require('eyes').inspector({stream: null, pretty: false, styles: {all: 'magenta'}})
-watchTree = require('watch-tree').watchTree
 {series, parallel} = require 'async'
+inspect = require('eyes').inspector
+  stream: null
+  pretty: false
+  styles:
+    all: 'magenta'
 
 
 # Coffee-Scripts with Options. Appended to `coffee -c`, sometimes with `-w` too.
 cso = [ "-o lib src" ]
 
 
-# ANSI Terminal Colors.
-bold  = "\033[0;1m"
-red   = "\033[0;31m"
-green = "\033[0;32m"
-reset = "\033[0m"
-
-
 # Utility functions
 
 pleaseWait = ->
-  console.log "\n#{bold}this may take a while#{green} ...\n"
+  console.log "\nThis may take a while...\n"
 
 print = (data) -> console.log data.toString().trim()
 
 handleError = (err) ->
   if err
-    console.log "\n\033[1;36m=>\033[1;37m Remember you need to `npm install` the package.json devDependencies and also `bundle install`.\033[0;37m\n"
+    console.log "\nUnexpected error!\nHave you done `cake install`?\n"
     console.log err.stack
 
 sh = (command) -> (k) -> exec command, k
@@ -54,8 +50,7 @@ command = (c, cb) ->
 task 'install', "Run once: npm, bundler, pygments, etc.", ->
   pleaseWait()
   command "
-    curl http://npmjs.org/install.sh | sh
-     && npm install
+    npm install
      && gem install bundler
      && bundle install
      && easy_install Pygments
@@ -80,7 +75,7 @@ task 'update', "latest node modules & ruby gems - the lazy way", ->
   ], (err) -> throw err if err
 
 
-# It's the local police at the root of chartra.
+# It's the local police at the project's root.
 # Catches outdated modules that `cake outdated` doesn't report (major versions).
 task 'police', "checks npm package & dependencies with `police -l .`", ->
   command "police -l ."
@@ -175,40 +170,6 @@ task 'test', "multi-framework tests", (options) ->
     execute = "NODE_ENV=#{options.env} ./node_modules/.bin/#{runner} #{args.join ' '}"
     execute += " | bcat" if options.bcat?
     command execute
-
-
-task 'assets:watch', 'Broken: watch source files and build lib/*.js & docs/', (options) ->
-
-  compileCoffee = (callback) ->
-    runCommand 'coffee', ['-wc', 'lib']
-
-  watchStuff = (callback) ->
-    watch_rate = 100 #ms
-    watch_info =
-      1:
-        path: "lib"
-        options:
-          'match': '.+\.coffee'
-        events: ["filePreexisted", "fileCreated", "fileModified"]
-        callback: -> console.log "you can't call me"
-
-    # NOTE: it would be nice if the watch_info[n].callback could be called
-    # ... and if we knew which event fired it - perhaps there is a way?
-
-    watcher = {}
-    for item, stuff of watch_info
-      stuff.options['sample-rate'] = watch_rate
-      for event in stuff.events
-        watcher["#{item}-#{event}"] = watchTree(stuff.path, stuff.options)
-        watcher["#{item}-#{event}"].on event, (what, stats) ->
-          console.log what + ' - is being documented (due to some event), stats: ' + inspect(stats)
-          if what.match /(.*)\/[^\/]+\.coffee$/ then runCommand 'docco', [what]
-          else console.log "unrecognized file type of #{what}"
-
-  series [
-    (sh "rm -rf #{docs}/")
-    parallel [compileCoffee, watchStuff]
-  ], (err) -> throw err if err
 
 
 # Build manuals / gh-pages almost exactly like https://github.com/josh/nack does

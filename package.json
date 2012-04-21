@@ -1,7 +1,7 @@
 { "name": "lin"
-, "description": "astrology language interface"
+, "description": "planting astrology language interface"
 , "keywords": [ "astrology" ]
-, "version": "0.0.5-1"
+, "version": "0.1.0"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -16,28 +16,25 @@
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "underscore": "1.x"
+  { "upon": "*"
+  , "underscore": "1.x"
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
   , "massagist": "*"
   , "geoutils": "*"
-  , "jsonify": "*"
   }
 , "devDependencies":
   { "coffee-script": "*"
+  , "jsonify": "*"
+  , "police": "*"
   , "should": "*"
   , "mocha": "*"
-  , "vows": "*"
-  , "eyes": "*"
-  , "watch-tree": "*"
-  , "docco": "*"
   , "async": "*"
-  , "police": "*"
+  , "docco": "*"
+  , "eyes": "*"
+  , "vows": "*"
   }
-, "scripts":
-  { "test": "cake -s test"
-  , "preinstall": "npm install https://github.com/documentcloud/underscore/tarball/master"
-  }
+, "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":
