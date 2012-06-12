@@ -5,3 +5,10 @@ branches:
 only:
   - master
   - active
+notifications:
+  email:
+    recipients:
+      - admin@astrolet.net
+    on_success: change
+    on_failure: always
+

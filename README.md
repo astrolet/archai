@@ -2,7 +2,7 @@
 # lin -- planting astrology language interface
 
 
-## DESCRIPTION
+## ABOUT
 
 Even big forests start with few trees:
 
@@ -11,24 +11,26 @@ Even big forests start with few trees:
 * polyglot(3)
 
 
-## EXAMPLES
-
-See `test` for specs / example use.
-
-
-## INSTALL
+## SETUP
 
 With the [npm](http://npmjs.org/) prerequisite, do:
 
     npm install lin
 
 
-## LICENSE
+## TEST
 
-This is free and unencumbered public domain software. For more information,
-see <http://unlicense.org/> or the accompanying [UNLICENSE](http://astrolet.github.com/lin/UNLICENSE.html) file.
+See `test` for example use.
+Run tests with `cake test`.
 
 
-## NAVIGATE
+## LAW
 
-Home(7)
+This is free and unencumbered public domain software.
+For more information, see <http://unlicense.org/> or the accompanying
+[UNLICENSE](http://astrolet.github.com/lin/UNLICENSE.html) file.
+
+
+## HOME
+
+Base(7)
