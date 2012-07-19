@@ -26,7 +26,7 @@
     <span class="nx">@reset</span> <span class="nx">models</span>
 
   <span class="nv">precious: </span><span class="nf">(options) -&gt;</span>
-    <span class="p">[</span><span class="nx">json</span><span class="p">,</span> <span class="nx">settings</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">settings</span><span class="p">]</span>
+    <span class="nv">json = </span><span class="nx">options</span><span class="p">.</span><span class="nx">data</span>
     <span class="k">return</span> <span class="p">[]</span> <span class="nx">unless</span> <span class="nx">json</span><span class="o">?</span>
     <span class="p">[</span><span class="nx">objs</span><span class="p">,</span> <span class="nx">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[],</span> <span class="mi">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">group</span> <span class="k">of</span> <span class="nx">json</span>
@@ -65,15 +65,12 @@ it would be Eden's (i.e. <code>eden -o phase</code>) whitelist.</p>             
                 <span class="nv">day_lon: </span><span class="kc">null</span>
               <span class="nx">idx</span><span class="o">++</span>
         <span class="k">when</span> <span class="s1">&#39;4&#39;</span>
-          <span class="nv">keys = </span><span class="p">[]</span>
-          <span class="k">for</span> <span class="nx">count</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">12</span><span class="p">]</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Whole-sign houses start with 'T' for topics, all others with 'H'.</p>             </td>             <td class="code">               <div class="highlight"><pre>            <span class="nx">keys</span><span class="p">.</span><span class="nx">push</span> <span class="s2">&quot;#{if settings.houses is &#39;W&#39; then &#39;T&#39; else &#39;H&#39;}#{count}&quot;</span>
-          <span class="k">for</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">group</span>
-            <span class="nx">objs</span><span class="p">.</span><span class="nx">push</span>
-              <span class="nv">id: </span><span class="s2">&quot;#{[keys[num]]}&quot;</span>
+          <span class="k">for</span> <span class="nx">count</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">12</span><span class="p">]</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Whole-sign houses start with 'T' for topics, all others with 'H'.</p>             </td>             <td class="code">               <div class="highlight"><pre>            <span class="nx">objs</span><span class="p">.</span><span class="nx">push</span>
+              <span class="nv">id: </span><span class="s2">&quot;#{if group[12] is &#39;W&#39; then &#39;T&#39; else &#39;H&#39;}#{count}&quot;</span>
               <span class="nv">sid: </span><span class="kc">null</span>
-              <span class="nv">lon: </span><span class="nx">val</span>
+              <span class="nv">lon: </span><span class="nx">group</span><span class="p">[</span><span class="nx">count</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
               <span class="nv">day_lon: </span><span class="kc">null</span>
-              <span class="nv">re: </span><span class="nx">@houses</span><span class="p">[</span><span class="nx">settings</span><span class="o">?</span><span class="p">.</span><span class="nx">houses</span><span class="p">]</span>
+              <span class="nv">re: </span><span class="nx">@houses</span><span class="p">[</span><span class="nx">group</span><span class="p">[</span><span class="mi">12</span><span class="p">]]</span>
             <span class="nx">idx</span><span class="o">++</span>
     <span class="nx">objs</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>Minimal lowercase tags, a reason.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">houses: </span><span class="p">{</span> <span class="s2">&quot;P&quot;</span><span class="o">:</span> <span class="s2">&quot;placidus&quot;</span>
           <span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="o">:</span> <span class="s2">&quot;koch&quot;</span>
