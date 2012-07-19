@@ -32,7 +32,7 @@ class Points extends Backbone.Collection
     @reset models
 
   precious: (options) ->
-    [json, settings] = [options.data, options.settings]
+    json = options.data
     return [] unless json?
     [objs, idx] = [[], 0]
     for i, group of json
@@ -73,17 +73,14 @@ class Points extends Backbone.Collection
                 day_lon: null
               idx++
         when '4'
-          keys = []
           for count in [1..12]
             # Whole-sign houses start with 'T' for topics, all others with 'H'.
-            keys.push "#{if settings.houses is 'W' then 'T' else 'H'}#{count}"
-          for num, val of group
             objs.push
-              id: "#{[keys[num]]}"
+              id: "#{if group[12] is 'W' then 'T' else 'H'}#{count}"
               sid: null
-              lon: val
+              lon: group[count-1]
               day_lon: null
-              re: @houses[settings?.houses]
+              re: @houses[group[12]]
             idx++
     objs
 
