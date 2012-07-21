@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "planting astrology language interface"
 , "keywords": [ "astrology" ]
-, "version": "0.1.1"
+, "version": "0.1.2"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -35,7 +35,7 @@
   , "vows": "*"
   }
 , "scripts": { "test": "cake -s test" }
-, "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
+, "os" : [ "!win32" ]
 , "engines" : { "node" : "0.8.x", "npm": "1.1.x" }
 , "licenses":
   [ { "type": "Unlicense"
