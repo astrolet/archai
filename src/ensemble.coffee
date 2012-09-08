@@ -98,6 +98,8 @@ class Ensemble extends Backbone.Collection
           name: null
 
     # Modern - besides *planets*.
+    # Notice how 10000 is added to objects above 10K.
+    # Perhaps we need a separate key group so things match more intuitively.
     beyond:
       the: [ [ 15,     "Chiron",    "\u26B7"]
            , [ 17,     "Ceres",     "\u26B3"]
@@ -109,7 +111,9 @@ class Ensemble extends Backbone.Collection
            , [ 30000,  "Varuna",    ""]
            , [ 60000,  "Quaoar",    ""]
            , [ 100377, "Sedna",     ""]
+           , [ 146108, "Haumea",    ""]
            , [ 146199, "Eris",      ""]
+           , [ 146472, "Makemake",  ""]
            ]
       add:
         traits: [ "modern", "outer" ]
