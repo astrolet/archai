@@ -50,7 +50,24 @@ module.exports = {
           # The same translatable attributes must be used across the collection.
           # This isn't immediately obvious, looking at a single init hash.
           for i in [0 .. @words.expect.length - 1]
-            init.attributes.use[@words.expect[i]] = init.the[0].length + i
+            expected = @words.expect[i] # the translated key
+            filledIn = @words.filler[i] # default, if no translation is present
+            sequence = init.the[0].length + i
+
+            init.attributes.use[expected] = sequence
+
+            # If each row's expected item is not in `words.data[{key}][{expect}]`
+            # add a default using `words.filler` data
+            # from a corresponding array position.
+            for row in init.the
+              identifier = row[init.attributes.use[init.attributes.key]]
+              substitute = row[init.attributes.use[filledIn]] # filled-in value
+              @words.data[identifier] ?= {}
+              unless @words.data[identifier][expected]?
+                # console.log "not found: key '#{identifier}' for '#{expected}'"
+                # console.log "using: #{substitute}"
+                addition = en: [ false, substitute ]
+                @words.data[identifier][expected] = addition
 
           # It's important to call `@translation` with sorted keys,
           # or else the `@words.data` order must match that of `init.the`.

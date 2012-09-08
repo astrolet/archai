@@ -140,12 +140,13 @@ class Ensemble extends Backbone.Collection
           name: null
 
   # See _./polyglot.coffee_ for assumptions.
-  # Try ising different attributes.key for the various itemerge types.
+  # Try using different attributes.key for the various itemerge types.
   # This will come in handy for minor ojects and means a more uniform id (any)
   # can be selected instead of mixing ids, even if wthout the risk of overlap,
   # by which I mean accidentally colliding ids - unlikely, anyway.
   words:
     expect: [ "name" ]
+    filler: [ "id" ]
     data:
 
       "MO":
@@ -234,11 +235,6 @@ class Ensemble extends Backbone.Collection
     if @cosmos?
       @school   = @cosmos.school
       @language = @cosmos.language
-
-    # Save some pointless typing.
-    # The id is the English name.
-    for item in @inits.beyond.the
-      @words.data[item[1]] = { name: { en: [ false, item[1] ] } }
 
     # Add `@words` translation.
     _.extend @, polyglot.ensure
