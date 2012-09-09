@@ -139,7 +139,7 @@ class Ensemble extends Backbone.Collection
           note: 1
           name: null
 
-  # See _./polyglot.coffee_ for assumptions.
+  # See _upon/src/polyglot.coffee_ for assumptions.
   # Try using different attributes.key for the various itemerge types.
   # This will come in handy for minor ojects and means a more uniform id (any)
   # can be selected instead of mixing ids, even if wthout the risk of overlap,
