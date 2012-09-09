@@ -8,7 +8,6 @@ Even big forests start with few trees:
 
 * points(3)
 * ensemble(3)
-* polyglot(3)
 
 
 ## SETUP

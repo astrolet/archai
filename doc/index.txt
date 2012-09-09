@@ -2,7 +2,6 @@
 points(3)           annotations/points
 itemerge(3)         annotations/itemerge
 ensemble(3)         annotations/ensemble
-polyglot(3)         annotations/polyglot
 gaia(3)             annotations/gaia
 
 # external manuals

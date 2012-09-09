@@ -1,7 +1,7 @@
 _ = require 'underscore'
 Backbone = require 'backbone'
 Itemerge = require './itemerge'
-polyglot = require './polyglot'
+polyglot = require('upon').polyglot
 
 
 # Mix of planets / dispositors (according to school) + other points of interest.
