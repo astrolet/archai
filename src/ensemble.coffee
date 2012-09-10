@@ -2,6 +2,7 @@ _ = require 'underscore'
 Backbone = require 'backbone'
 Itemerge = require './itemerge'
 polyglot = require('upon').polyglot
+more = require('there').more
 
 
 # Mix of planets / dispositors (according to school) + other points of interest.
@@ -97,26 +98,16 @@ class Ensemble extends Backbone.Collection
           u: 1
           name: null
 
-    # Modern - besides *planets*.
-    # Notice how 10000 is added to objects above 10K.
-    # Perhaps we need a separate key group so things match more intuitively.
-    beyond:
+    # Modern, besides *planets*, i.e. asteroids.
+    further:
       the: [ [ 15,     "Chiron",    "\u26B7"]
            , [ 17,     "Ceres",     "\u26B3"]
            , [ 18,     "Pallas",    "\u26B4"]
            , [ 19,     "Juno",      "\u26B5"]
            , [ 20,     "Vesta",     "\u26B6"]
-           , [ 10128,  "Nemesis",   ""]
-           , [ 17066,  "Nessus",    ""]
-           , [ 30000,  "Varuna",    ""]
-           , [ 60000,  "Quaoar",    ""]
-           , [ 100377, "Sedna",     ""]
-           , [ 146108, "Haumea",    ""]
-           , [ 146199, "Eris",      ""]
-           , [ 146472, "Makemake",  ""]
            ]
       add:
-        traits: [ "modern", "outer" ]
+        traits: [ "modern" ]
       attributes:
         key: "id"
         use:
@@ -233,8 +224,14 @@ class Ensemble extends Backbone.Collection
   # The @language & @school are optional - defaults set by `@translatable ()`.
   initialize: (models, @cosmos) ->
     if @cosmos?
-      @school   = @cosmos.school
-      @language = @cosmos.language
+      @school   = @cosmos.school ? null
+      @language = @cosmos.language ? null
+
+    # TODO: both more and care should come through @cosmos?
+    # ... certainly needed if eden is to hand custom, user-specified asteroids.
+    for key, add of more
+      if @inits[key]?
+        @inits[key].the = _.union @inits[key].the, add
 
     # Add `@words` translation.
     _.extend @, polyglot.ensure

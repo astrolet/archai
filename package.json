@@ -17,6 +17,7 @@
 , "main": "index"
 , "dependencies":
   { "upon": "*"
+  , "there": "*"
   , "underscore": "1.x"
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
