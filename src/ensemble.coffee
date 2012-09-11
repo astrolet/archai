@@ -34,7 +34,7 @@ class Ensemble extends Backbone.Collection
            , [ "Ο", 30,  57, "SA", 6, "♄", "Kritodēmos", "Kronos" ]
            ]
       add:
-        traits: [ "traditional", "planet", "dispositor" ]
+        traits: [ "traditional", "planet", "dispositor", "index" ]
       # The `planets.attributes.use`-ed by array index position -
       # do become instance data.
       attributes:
@@ -90,7 +90,7 @@ class Ensemble extends Backbone.Collection
            , [ "PL", "♇", 9 ]
            ]
       add:
-        traits: [ "modern", "outer", "planet" ]
+        traits: [ "modern", "outer", "planet", "index" ]
       attributes:
         key: "id"
         use:
@@ -108,7 +108,7 @@ class Ensemble extends Backbone.Collection
            , [ 20,     "Vesta",     "\u26B6"]
            ]
       add:
-        traits: [ "modern" ]
+        traits: [ "modern", "index" ]
       attributes:
         key: "id"
         use:
@@ -224,6 +224,11 @@ class Ensemble extends Backbone.Collection
   dispositors: ->
     new Backbone.Collection @filter (item) ->
       _.include item.attributes.traits, 'dispositor'
+
+  # What is being made available.
+  index: ->
+    new Backbone.Collection @filter (item) ->
+      _.include item.attributes.traits, 'index'
 
   # The following get system objects whose `id`s are possibly subject to change.
   # The `@getNone` is needed for representations that have no exaltation
