@@ -1,7 +1,7 @@
 // Exports
 [ 'Points'
 , 'Ensemble'
-, 'polyglot'
+, 'theres'
 , 'Gaia'
 ].forEach(function(name) {
   var path = './lib/' + name.toLowerCase();

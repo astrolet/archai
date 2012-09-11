@@ -1,7 +1,9 @@
 _ = require 'underscore'
 Backbone = require 'backbone'
 Itemerge = require './itemerge'
-polyglot = require './polyglot'
+polyglot = require('upon').polyglot
+care = require('there').care
+more = require('there').more
 
 
 # Mix of planets / dispositors (according to school) + other points of interest.
@@ -32,7 +34,7 @@ class Ensemble extends Backbone.Collection
            , [ "Ο", 30,  57, "SA", 6, "♄", "Kritodēmos", "Kronos" ]
            ]
       add:
-        traits: [ "traditional", "planet", "dispositor" ]
+        traits: [ "traditional", "planet", "dispositor", "index" ]
       # The `planets.attributes.use`-ed by array index position -
       # do become instance data.
       attributes:
@@ -88,7 +90,7 @@ class Ensemble extends Backbone.Collection
            , [ "PL", "♇", 9 ]
            ]
       add:
-        traits: [ "modern", "outer", "planet" ]
+        traits: [ "modern", "outer", "planet", "index" ]
       attributes:
         key: "id"
         use:
@@ -97,22 +99,16 @@ class Ensemble extends Backbone.Collection
           u: 1
           name: null
 
-    # Modern - besides *planets*.
-    beyond:
+    # Modern, besides *planets*, i.e. asteroids.
+    further:
       the: [ [ 15,     "Chiron",    "\u26B7"]
            , [ 17,     "Ceres",     "\u26B3"]
            , [ 18,     "Pallas",    "\u26B4"]
            , [ 19,     "Juno",      "\u26B5"]
            , [ 20,     "Vesta",     "\u26B6"]
-           , [ 10128,  "Nemesis",   ""]
-           , [ 17066,  "Nessus",    ""]
-           , [ 30000,  "Varuna",    ""]
-           , [ 60000,  "Quaoar",    ""]
-           , [ 100377, "Sedna",     ""]
-           , [ 146199, "Eris",      ""]
            ]
       add:
-        traits: [ "modern", "outer" ]
+        traits: [ "modern", "index" ]
       attributes:
         key: "id"
         use:
@@ -135,80 +131,15 @@ class Ensemble extends Backbone.Collection
           note: 1
           name: null
 
-  # See _./polyglot.coffee_ for assumptions.
-  # Try ising different attributes.key for the various itemerge types.
+  # See _upon/src/polyglot.coffee_ for assumptions.
+  # Try using different attributes.key for the various itemerge types.
   # This will come in handy for minor ojects and means a more uniform id (any)
   # can be selected instead of mixing ids, even if wthout the risk of overlap,
   # by which I mean accidentally colliding ids - unlikely, anyway.
   words:
     expect: [ "name" ]
+    filler: [ "id" ]
     data:
-
-      "MO":
-        name:
-          en: [ "Selene",         "Moon" ]
-          el: [ true,             "Σελήνη" ]
-          bg: [ "Селена",         "Луна" ]
-      "ME":
-        name:
-          en: [ "Hermes",         "Mercury" ]
-          el: [ true,             "Ἑρμῆς" ]
-          bg: [ "Хермес",         "Меркурий" ]
-      "VE":
-        name:
-          en: [ "Aphrodite",      "Venus" ]
-          el: [ true,             "Ἀφροδίτη" ]
-          bg: [ "Афродита",       "Венера" ]
-      "SO":
-        name:
-          en: [ "Helios",         "Sun" ]
-          el: [ true,             "Ἥλιος" ]
-          bg: [ "Хелиос",         "Слънце" ]
-      "MA":
-        name:
-          en: [ "Ares",           "Mars" ]
-          el: [ true,             "Ἄρης" ]
-          bg: [ "Арес",           "Марс" ]
-      "JU":
-        name:
-          en: [ "Zeus",           "Jupiter" ]
-          el: [ true,             "Ζεύς" ]
-          bg: [ "Зевс",           "Юпитер" ]
-      "SA":
-        name:
-          en: [ "Kronos",         "Saturn" ]
-          el: [ true,             "Κρόνος" ]
-          bg: [ "Кронос",         "Сатурн" ]
-
-      "NN":
-        name:
-          en: [ true,             "North Node" ]
-      "SN":
-        name:
-          en: [ true,             "South Node" ]
-
-      "AS":
-        name:
-          en: [ false,             "Ascendant" ]
-      "MC":
-        name:
-          en: [ false,             "Midheaven" ]
-      "DS":
-        name:
-          en: [ false,             "Descendant" ]
-      "IC":
-        name:
-          en: [ false,             "Imum Coeli" ]
-
-      "UR":
-        name:
-          en: [ false,            "Uranus" ]
-      "NE":
-        name:
-          en: [ false,            "Neptune" ]
-      "PL":
-        name:
-          en: [ false,            "Pluto" ]
 
       "-":
         name:
@@ -228,13 +159,15 @@ class Ensemble extends Backbone.Collection
   # The @language & @school are optional - defaults set by `@translatable ()`.
   initialize: (models, @cosmos) ->
     if @cosmos?
-      @school   = @cosmos.school
-      @language = @cosmos.language
+      @school   = @cosmos.school ? null
+      @language = @cosmos.language ? null
 
-    # Save some pointless typing.
-    # The id is the English name.
-    for item in @inits.beyond.the
-      @words.data[item[1]] = { name: { en: [ false, item[1] ] } }
+    # TODO: both more and care should come through @cosmos?
+    # ... certainly needed if eden is to hand custom, user-specified asteroids.
+    _.extend @words.data, care
+    for key, add of more
+      if @inits[key]?
+        @inits[key].the = _.union @inits[key].the, add
 
     # Add `@words` translation.
     _.extend @, polyglot.ensure
@@ -291,6 +224,11 @@ class Ensemble extends Backbone.Collection
   dispositors: ->
     new Backbone.Collection @filter (item) ->
       _.include item.attributes.traits, 'dispositor'
+
+  # What is being made available.
+  index: ->
+    new Backbone.Collection @filter (item) ->
+      _.include item.attributes.traits, 'index'
 
   # The following get system objects whose `id`s are possibly subject to change.
   # The `@getNone` is needed for representations that have no exaltation

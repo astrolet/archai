@@ -1,4 +1,5 @@
-ensemble = new (require "../../lib/ensemble")
+Ensemble = require("../../index").Ensemble
+ensemble = new Ensemble
 _ = require "underscore"
 
 describe "Ensemble:", ->

@@ -1,4 +1,4 @@
-Points = require "../../lib/points"
+Points = require("../../index").Points
 
 describe "Points", ->
 
