@@ -100,12 +100,13 @@ class Ensemble extends Backbone.Collection
           name: null
 
     # Modern, besides *planets*, i.e. asteroids.
+    # The unicode symbols aren't being used, as they don't seem to display...
     further:
-      the: [ [ 15,     "Chiron",    "\u26B7"]
-           , [ 17,     "Ceres",     "\u26B3"]
-           , [ 18,     "Pallas",    "\u26B4"]
-           , [ 19,     "Juno",      "\u26B5"]
-           , [ 20,     "Vesta",     "\u26B6"]
+      the: [ [ 15,     "Chiron",    "\u26B7", "2060_Chiron"]
+           , [ 17,     "Ceres",     "\u26B3", "Ceres_(dwarf_planet)"]
+           , [ 18,     "Pallas",    "\u26B4", "2_Pallas"]
+           , [ 19,     "Juno",      "\u26B5", "3_Juno"]
+           , [ 20,     "Vesta",     "\u26B6", "4_Vesta"]
            ]
       add:
         traits: [ "modern", "index" ]
@@ -114,6 +115,7 @@ class Ensemble extends Backbone.Collection
         use:
           id: 1
           sid: 0
+          wid: 3
           name: null
 
     # System utility objects.  The spectrum of their meaning is TBD.
