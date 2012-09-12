@@ -25,13 +25,13 @@ class Ensemble extends Backbone.Collection
     # 7. Greek Phonetic Name
     # 8. Name (added based on language and school preference)
     planets:
-      the: [ [ "Η", 25, 108, "MO", 1, "☽", "Asklēpios", "Selēnē" ]
-           , [ "Ε", 20,  76, "ME", 2, "☿", "Hermēs", "Hermēs" ]
-           , [ "Ι",  8,  82, "VE", 3, "♀", "Anubio", "Aphrodite" ]
-           , [ "Ω", 19, 120, "SO", 0, "☉", "Nechepsō & Petosiris", "Hēlios" ]
-           , [ "Α", 15,  66, "MA", 4, "♂", "Abramos", "Arēs" ]
-           , [ "Υ", 12,  79, "JU", 5, "♃", "Orpheus", "Zeus" ]
-           , [ "Ο", 30,  57, "SA", 6, "♄", "Kritodēmos", "Kronos" ]
+      the: [ [ "Η", 25, 108, "MO", 1, "☽", "Asklēpios", "Selēnē", "Moon" ]
+           , [ "Ε", 20,  76, "ME", 2, "☿", "Hermēs", "Hermēs", "Mercury_(planet)" ]
+           , [ "Ι",  8,  82, "VE", 3, "♀", "Anubio", "Aphrodite", "Venus" ]
+           , [ "Ω", 19, 120, "SO", 0, "☉", "Nechepsō & Petosiris", "Hēlios", "Sun" ]
+           , [ "Α", 15,  66, "MA", 4, "♂", "Abramos", "Arēs", "Mars" ]
+           , [ "Υ", 12,  79, "JU", 5, "♃", "Orpheus", "Zeus", "Jupiter" ]
+           , [ "Ο", 30,  57, "SA", 6, "♄", "Kritodēmos", "Kronos", "Saturn" ]
            ]
       add:
         traits: [ "traditional", "planet", "dispositor", "index" ]
@@ -46,6 +46,7 @@ class Ensemble extends Backbone.Collection
           "name": null # the last (not there yet), added / set upon instantiation
           "minor": 1
           "major": 2
+          "wid": 8
         # Related is for later - relations, etc.
         related:
           "vowel": 0
@@ -85,9 +86,9 @@ class Ensemble extends Backbone.Collection
 
     # Outer planets.
     outers:
-      the: [ [ "UR", "♅", 7 ]
-           , [ "NE", "♆", 8 ]
-           , [ "PL", "♇", 9 ]
+      the: [ [ "UR", "♅", 7, "Uranus"]
+           , [ "NE", "♆", 8, "Neptune"]
+           , [ "PL", "♇", 9, "Pluto"]
            ]
       add:
         traits: [ "modern", "outer", "planet", "index" ]
@@ -97,15 +98,17 @@ class Ensemble extends Backbone.Collection
           id: 0
           sid: 2
           u: 1
+          wid: 3
           name: null
 
     # Modern, besides *planets*, i.e. asteroids.
+    # The unicode symbols aren't being used, as they don't seem to display...
     further:
-      the: [ [ 15,     "Chiron",    "\u26B7"]
-           , [ 17,     "Ceres",     "\u26B3"]
-           , [ 18,     "Pallas",    "\u26B4"]
-           , [ 19,     "Juno",      "\u26B5"]
-           , [ 20,     "Vesta",     "\u26B6"]
+      the: [ [ 15,     "Chiron",    "\u26B7", "2060_Chiron"]
+           , [ 17,     "Ceres",     "\u26B3", "Ceres_(dwarf_planet)"]
+           , [ 18,     "Pallas",    "\u26B4", "2_Pallas"]
+           , [ 19,     "Juno",      "\u26B5", "3_Juno"]
+           , [ 20,     "Vesta",     "\u26B6", "4_Vesta"]
            ]
       add:
         traits: [ "modern", "index" ]
@@ -114,6 +117,7 @@ class Ensemble extends Backbone.Collection
         use:
           id: 1
           sid: 0
+          wid: 3
           name: null
 
     # System utility objects.  The spectrum of their meaning is TBD.

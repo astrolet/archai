@@ -6,9 +6,14 @@ ensemble = new Ensemble
 # Just something to easily display.
 
 module.exports = ->
+
   ensemble.comparator = (stuff) -> stuff.get('name')
   ensemble.translate('en', 'm').sort().index().map (item) ->
     sid = item['attributes']['sid']
     sid = if sid >= 10000 then sid - 10000 else sid
-    name: item['attributes']['name'], sid: sid
+
+    { name: item['attributes']['name']
+    , sid: sid
+    , wid: item['attributes']['wid'] ? ''
+    }
 
