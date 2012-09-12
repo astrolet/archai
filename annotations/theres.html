@@ -2,10 +2,15 @@
 <span class="nv">ensemble = </span><span class="k">new</span> <span class="nx">Ensemble</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>In the future, this could be a Backbone Collection too.
 Keep it simple for now - hardcoded to (and sorted by) modern English names.
 Just something to easily display.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">module.exports = </span><span class="o">-&gt;</span>
+
   <span class="nv">ensemble.comparator = </span><span class="nf">(stuff) -&gt;</span> <span class="nx">stuff</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
   <span class="nx">ensemble</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">).</span><span class="nx">sort</span><span class="p">().</span><span class="nx">index</span><span class="p">().</span><span class="nx">map</span> <span class="nf">(item) -&gt;</span>
     <span class="nv">sid = </span><span class="nx">item</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;sid&#39;</span><span class="p">]</span>
     <span class="nv">sid = </span><span class="k">if</span> <span class="nx">sid</span> <span class="o">&gt;=</span> <span class="mi">10000</span> <span class="k">then</span> <span class="nx">sid</span> <span class="o">-</span> <span class="mi">10000</span> <span class="k">else</span> <span class="nx">sid</span>
-    <span class="nv">name: </span><span class="nx">item</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="nv">sid: </span><span class="nx">sid</span>
+
+    <span class="p">{</span> <span class="nv">name: </span><span class="nx">item</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="p">,</span> <span class="nv">sid: </span><span class="nx">sid</span>
+    <span class="p">,</span> <span class="nv">wid: </span><span class="nx">item</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;wid&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">}</span>
 
 </pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
