@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "planting astrology language interface"
 , "keywords": [ "astrology" ]
-, "version": "0.1.3"
+, "version": "0.1.4"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
