@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "planting astrology language interface"
 , "keywords": [ "astrology" ]
-, "version": "0.1.5"
+, "version": "0.1.5-1"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -21,7 +21,7 @@
   , "underscore": "1.x"
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
-  , "massagist": "*"
+  , "massagist": "0.0.3"
   , "geoutils": "*"
   }
 , "devDependencies":
