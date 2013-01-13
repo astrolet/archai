@@ -1,11 +1,10 @@
 # annotations
-points(3)           annotations/points
-itemerge(3)         annotations/itemerge
-ensemble(3)         annotations/ensemble
+Points(3)           annotations/points
+Itemerge(3)         annotations/itemerge
+Ensemble(3)         annotations/ensemble
 theres(3)           annotations/theres
-gaia(3)             annotations/gaia
-zodiac(3)           annotations/zodiac
-cosmos(3)           annotations/cosmos
+Zodiac(3)           annotations/zodiac
+Cosmos(3)           annotations/cosmos
 
 # external manuals
 Index(7)            http://astrolet.github.com/lin

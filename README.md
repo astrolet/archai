@@ -6,11 +6,11 @@
 
 Even big forests start with few trees:
 
-* points(3)
-* ensemble(3)
+* Points(3)
+* Ensemble(3)
 * theres(3)
-* zodiac(3)
-* cosmos(3)
+* Zodiac(3)
+* Cosmos(3)
 
 
 ## SETUP
