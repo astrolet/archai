@@ -15,10 +15,6 @@ inspect = require('eyes').inspector
     all: 'magenta'
 
 
-# Coffee-Scripts with Options. Appended to `coffee -c`, sometimes with `-w` too.
-cso = [ "-o lib src" ]
-
-
 # Utility functions
 
 pleaseWait = ->
@@ -81,43 +77,11 @@ task 'police', "checks npm package & dependencies with `police -l .`", ->
   command "police -l ."
 
 
-# Development / workflow mode.
-# Ready to watch-compile coffee scripts from (and to) various places.
-# It could later do other things as well (e.g. build, serve & reload the docs/).
-task 'dev', "workflow convenience", ->
-  commands = []
-  for cs in cso
-    commands.push command "coffee -wc #{cs}"
-
-  parallel commands, (err) -> throw err if err
-
-
 # Literate programming for the coffee sources.
 task 'docs', "docco -- docs", ->
   series [
     sh "rm -rf #{docs}/"
-    command "find src | grep .coffee | xargs docco"
-  ], (err) -> throw err if err
-
-
-# Coffee to JS -- in addition to the `cake dev` watch / compiling.
-task 'cs2js', "compiles coffee scripts", ->
-  for cs in cso
-    command "coffee -c #{cs}"
-
-
-# Get ready to deploy (everything).
-task 'build', "ready to push & deploy", ->
-  compile = (callback) ->
-    command "
-      npm install
-       && cake cs2js
-      "
-    callback
-
-  parallel [
-    compile()
-    invoke 'docs'
+    command "find lib | grep .coffee | xargs docco"
   ], (err) -> throw err if err
 
 

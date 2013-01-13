@@ -1,8 +1,9 @@
 _ = require 'underscore'
 Backbone = require 'backbone-rel'
 
-# Cosmic / canonical point of interest
-# emerging item or merging of a less active one
+# Cosmic / canonical point of interest,
+# emerging item or merging of a less active one.
+# Not being exported on its own, but rather via the Ensemble collection.
 class Itemerge extends Backbone.RelationalModel
 
   initialize: (attributes = {}) ->

@@ -1,7 +1,7 @@
 _ = require 'underscore'
 Backbone = require 'backbone'
 Itemerge = require './itemerge'
-polyglot = require('upon').polyglot
+polyglot = require('there').polyglot
 care = require('there').care
 more = require('there').more
 

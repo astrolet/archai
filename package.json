@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "planting astrology language interface"
-, "keywords": [ "astrology" ]
-, "version": "0.1.5-1"
+, "keywords": [ "astrology", "perspective", "hellenistic", "postmodern", "cosmos", "stuff" ]
+, "version": "0.2.0"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -9,31 +9,29 @@
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "url" : "https://www.pivotaltracker.com/projects/265847"
+  , "url" : "https://github.com/astrolet/lin/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "upon": ">=0.0.3"
-  , "there": "0.0.3"
-  , "underscore": "1.x"
+  { "coffee-script": "*"
+  , "underscore": "*"
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
-  , "massagist": "0.0.3"
-  , "geoutils": "*"
+  , "there": "*"
+  , "upon": "*"
   }
 , "devDependencies":
-  { "coffee-script": "*"
-  , "jsonify": "*"
+  { "jsonify": "*"
   , "police": "*"
   , "should": "*"
   , "mocha": "*"
   , "async": "*"
   , "docco": "*"
   , "eyes": "*"
-  , "vows": "*"
+  , "chai": "*"
   }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "!win32" ]
