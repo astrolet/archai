@@ -4,7 +4,12 @@ itemerge(3)         annotations/itemerge
 ensemble(3)         annotations/ensemble
 theres(3)           annotations/theres
 gaia(3)             annotations/gaia
+zodiac(3)           annotations/zodiac
+cosmos(3)           annotations/cosmos
 
 # external manuals
 Index(7)            http://astrolet.github.com/lin
 Base(7)             http://astrolin.com/to/
+upon(7)             http://astrolet.github.com/upon
+there(7)            http://astrolet.github.com/there
+

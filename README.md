@@ -9,6 +9,8 @@ Even big forests start with few trees:
 * points(3)
 * ensemble(3)
 * theres(3)
+* zodiac(3)
+* cosmos(3)
 
 
 ## SETUP
@@ -29,6 +31,11 @@ Run tests with `cake test`.
 This is free and unencumbered public domain software.
 For more information, see <http://unlicense.org/> or the accompanying
 [UNLICENSE](http://astrolet.github.com/lin/UNLICENSE.html) file.
+
+
+## ALSO
+
+there(7), upon(7)
 
 
 ## HOME
