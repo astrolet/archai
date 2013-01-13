@@ -1,4 +1,4 @@
-cosmos = new (require "../../lib/cosmos")
+cosmos = new (require "../../index").Cosmos
 _ = require "underscore"
 inspect = (require "eyes").inspector()
 assert  = (require "chai").assert

@@ -1,4 +1,4 @@
-zodiac = new (require "../../lib/zodiac")
+zodiac = new (require "../../index").Zodiac
 assert = (require "chai").assert
 should = (require "chai").should
 
