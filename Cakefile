@@ -81,7 +81,7 @@ task 'police', "checks npm package & dependencies with `police -l .`", ->
 task 'docs', "docco -- docs", ->
   series [
     sh "rm -rf #{docs}/"
-    command "find src | grep .coffee | xargs docco"
+    command "find lib | grep .coffee | xargs docco"
   ], (err) -> throw err if err
 
 
