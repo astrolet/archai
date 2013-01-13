@@ -21,8 +21,6 @@
   , "underscore": "*"
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
-  , "massagist": "*"
-  , "geoutils": "*"
   }
 , "devDependencies":
   { "coffee-script": "*"
@@ -33,7 +31,6 @@
   , "async": "*"
   , "docco": "*"
   , "eyes": "*"
-  , "vows": "*"
   , "chai": "*"
   }
 , "scripts": { "test": "cake -s test" }

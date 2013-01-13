@@ -2,7 +2,6 @@
 [ 'Points'
 , 'Ensemble'
 , 'theres'
-, 'Gaia'
 , 'Zodiac'
 , 'Cosmos'
 ].forEach(function(name) {

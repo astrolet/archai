@@ -1,1 +1,0 @@
-Gaia = require("../../index").Gaia
