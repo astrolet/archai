@@ -1,7 +1,7 @@
 _        = require 'underscore'
 Backbone = require 'backbone-rel'
 degrees  = require('upon').degrees
-polyglot = require('upon').polyglot
+polyglot = require('there').polyglot
 nestCollection = require './nest-collection'
 
 
