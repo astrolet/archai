@@ -1,7 +1,7 @@
 { "name": "lin"
 , "description": "planting astrology language interface"
 , "keywords": [ "astrology", "perspective", "hellenistic", "postmodern", "cosmos", "stuff" ]
-, "version": "0.1.6"
+, "version": "0.2.0"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
@@ -16,15 +16,15 @@
 , "directories": { "lib": "./lib" }
 , "main": "index"
 , "dependencies":
-  { "upon": "*"
-  , "there": "*"
+  { "coffee-script": "*"
   , "underscore": "*"
   , "backbone": "0.5.x"
   , "backbone-rel": "0.3.x"
+  , "there": "*"
+  , "upon": "*"
   }
 , "devDependencies":
-  { "coffee-script": "*"
-  , "jsonify": "*"
+  { "jsonify": "*"
   , "police": "*"
   , "should": "*"
   , "mocha": "*"
