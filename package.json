@@ -2,7 +2,7 @@
 , "description": "animating the cosmos, by definition and from a human use case condition / perspective"
 , "keywords": [ "astrology", "perspective", "hellenistic", "postmodern", "archetypal", "cosmos", "stuff" ]
 , "version": "0.2.0"
-, "homepage": "http://astrolin.com/to"
+, "homepage": "http://astrolin.com/to/archai"
 , "repository":
   { "type": "git"
   , "url": "git://github.com/astrolet/lin.git"
