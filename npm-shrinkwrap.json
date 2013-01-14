@@ -1,5 +1,5 @@
 {
-  "name": "lin",
+  "name": "archai",
   "version": "0.2.0",
   "dependencies": {
     "coffee-script": {
@@ -72,11 +72,11 @@
         "geoutils": {
           "version": "0.1.0"
         },
-        "async": {
-          "version": "0.1.18"
-        },
         "docco": {
           "version": "0.3.0"
+        },
+        "async": {
+          "version": "0.1.18"
         },
         "eyes": {
           "version": "0.1.7"
@@ -86,6 +86,14 @@
         },
         "should": {
           "version": "0.6.1"
+        },
+        "vows": {
+          "version": "0.6.4",
+          "dependencies": {
+            "diff": {
+              "version": "1.0.4"
+            }
+          }
         },
         "mocha": {
           "version": "1.7.4",
@@ -177,14 +185,6 @@
               "version": "0.2.3"
             }
           }
-        },
-        "vows": {
-          "version": "0.6.4",
-          "dependencies": {
-            "diff": {
-              "version": "1.0.4"
-            }
-          }
         }
       }
     },
@@ -197,11 +197,11 @@
     "docco": {
       "version": "0.3.0"
     },
-    "eyes": {
-      "version": "0.1.7"
-    },
     "jsonify": {
       "version": "0.0.0"
+    },
+    "eyes": {
+      "version": "0.1.7"
     },
     "should": {
       "version": "0.6.1"
