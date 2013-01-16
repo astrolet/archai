@@ -72,11 +72,11 @@
         "geoutils": {
           "version": "0.1.0"
         },
-        "docco": {
-          "version": "0.3.0"
-        },
         "async": {
           "version": "0.1.18"
+        },
+        "docco": {
+          "version": "0.3.0"
         },
         "eyes": {
           "version": "0.1.7"
@@ -197,11 +197,11 @@
     "docco": {
       "version": "0.3.0"
     },
-    "jsonify": {
-      "version": "0.0.0"
-    },
     "eyes": {
       "version": "0.1.7"
+    },
+    "jsonify": {
+      "version": "0.0.0"
     },
     "should": {
       "version": "0.6.1"

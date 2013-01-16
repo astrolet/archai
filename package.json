@@ -5,11 +5,11 @@
 , "homepage": "http://astrolin.com/to/archai"
 , "repository":
   { "type": "git"
-  , "url": "git://github.com/astrolet/lin.git"
+  , "url": "git://github.com/astrolet/archai.git"
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "url" : "https://github.com/astrolet/lin/issues"
+  , "url" : "https://github.com/astrolet/archai/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
