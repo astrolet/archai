@@ -7,8 +7,8 @@ Zodiac(3)           annotations/zodiac
 Cosmos(3)           annotations/cosmos
 
 # external manuals
-Index(7)            http://astrolet.github.com/lin
-Base(7)             http://astrolin.com/to/
+Index(7)            http://astrolet.github.com/archai
+Base(7)             http://astrolin.com/to/archai
 upon(7)             http://astrolet.github.com/upon
 there(7)            http://astrolet.github.com/there
 
