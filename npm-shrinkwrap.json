@@ -13,14 +13,7 @@
     },
     "backbone-rel": {
       "version": "0.3.0-1",
-      "dependencies": {
-        "underscore": {
-          "version": "1.4.3"
-        },
-        "backbone": {
-          "version": "0.5.3"
-        }
-      }
+      "from": "https://github.com/orlin/Backbone-relational/tarball/0.3.0-1"
     },
     "there": {
       "version": "0.1.0",
