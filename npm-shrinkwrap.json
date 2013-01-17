@@ -9,21 +9,16 @@
       "version": "1.4.3"
     },
     "backbone": {
-      "version": "0.5.3",
-      "dependencies": {
-        "underscore": {
-          "version": "1.4.3"
-        }
-      }
+      "version": "0.5.3"
     },
     "backbone-rel": {
-      "version": "0.3.0",
+      "version": "0.3.0-1",
       "dependencies": {
         "underscore": {
           "version": "1.4.3"
         },
         "backbone": {
-          "version": "0.9.10"
+          "version": "0.5.3"
         }
       }
     },
@@ -86,6 +81,14 @@
         },
         "should": {
           "version": "0.6.1"
+        },
+        "vows": {
+          "version": "0.6.4",
+          "dependencies": {
+            "diff": {
+              "version": "1.0.4"
+            }
+          }
         },
         "mocha": {
           "version": "1.7.4",
@@ -175,14 +178,6 @@
             },
             "pkginfo": {
               "version": "0.2.3"
-            }
-          }
-        },
-        "vows": {
-          "version": "0.6.4",
-          "dependencies": {
-            "diff": {
-              "version": "1.0.4"
             }
           }
         }

@@ -19,7 +19,7 @@
   { "coffee-script": "*"
   , "underscore": "*"
   , "backbone": "0.5.x"
-  , "backbone-rel": "0.3.x"
+  , "backbone-rel": "https://github.com/orlin/Backbone-relational/tarball/0.3.x"
   , "there": "*"
   , "upon": "*"
   }
