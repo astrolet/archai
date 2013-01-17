@@ -1,6 +1,6 @@
 {
   "name": "archai",
-  "version": "0.2.0",
+  "version": "0.2.0-1",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -9,23 +9,11 @@
       "version": "1.4.3"
     },
     "backbone": {
-      "version": "0.5.3",
-      "dependencies": {
-        "underscore": {
-          "version": "1.4.3"
-        }
-      }
+      "version": "0.5.3"
     },
     "backbone-rel": {
-      "version": "0.3.0",
-      "dependencies": {
-        "underscore": {
-          "version": "1.4.3"
-        },
-        "backbone": {
-          "version": "0.9.9"
-        }
-      }
+      "version": "0.3.0-1",
+      "from": "https://github.com/orlin/Backbone-relational/tarball/0.3.0-1"
     },
     "there": {
       "version": "0.1.0",
@@ -39,21 +27,11 @@
         "async": {
           "version": "0.1.22"
         },
+        "docco": {
+          "version": "0.3.0"
+        },
         "eyes": {
           "version": "0.1.8"
-        },
-        "docco": {
-          "version": "0.4.0",
-          "dependencies": {
-            "commander": {
-              "version": "1.0.4",
-              "dependencies": {
-                "keypress": {
-                  "version": "0.1.0"
-                }
-              }
-            }
-          }
         }
       }
     },
@@ -75,11 +53,11 @@
         "async": {
           "version": "0.1.18"
         },
-        "docco": {
-          "version": "0.3.0"
-        },
         "eyes": {
           "version": "0.1.7"
+        },
+        "docco": {
+          "version": "0.3.0"
         },
         "jsonify": {
           "version": "0.0.0"
