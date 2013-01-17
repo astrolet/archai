@@ -1,7 +1,7 @@
 { "name": "archai"
 , "description": "of-course, the cosmos is alive"
 , "keywords": [ "astrology", "perspective", "hellenistic", "postmodern", "archetypal", "cosmos", "stuff" ]
-, "version": "0.2.0"
+, "version": "0.2.0-1"
 , "homepage": "http://astrolin.com/to/archai"
 , "repository":
   { "type": "git"

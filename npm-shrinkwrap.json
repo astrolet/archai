@@ -1,6 +1,6 @@
 {
   "name": "archai",
-  "version": "0.2.0",
+  "version": "0.2.0-1",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -23,7 +23,7 @@
           "version": "1.4.3"
         },
         "backbone": {
-          "version": "0.9.9"
+          "version": "0.9.10"
         }
       }
     },
@@ -86,14 +86,6 @@
         },
         "should": {
           "version": "0.6.1"
-        },
-        "vows": {
-          "version": "0.6.4",
-          "dependencies": {
-            "diff": {
-              "version": "1.0.4"
-            }
-          }
         },
         "mocha": {
           "version": "1.7.4",
@@ -183,6 +175,14 @@
             },
             "pkginfo": {
               "version": "0.2.3"
+            }
+          }
+        },
+        "vows": {
+          "version": "0.6.4",
+          "dependencies": {
+            "diff": {
+              "version": "1.0.4"
             }
           }
         }
