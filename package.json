@@ -1,15 +1,15 @@
 { "name": "lin"
-, "description": "planting astrology language interface"
+, "description": "replanted and grown as archai"
 , "keywords": [ "astrology", "perspective", "hellenistic", "postmodern", "cosmos", "stuff" ]
-, "version": "0.2.0"
+, "version": "0.2.0-1"
 , "homepage": "http://astrolin.com/to"
 , "repository":
   { "type": "git"
-  , "url": "git://github.com/astrolet/lin.git"
+  , "url": "git://github.com/astrolet/archai.git"
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "url" : "https://github.com/astrolet/lin/issues"
+  , "url" : "https://github.com/astrolet/archai/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []

@@ -1,5 +1,9 @@
 # [![Build Status](https://secure.travis-ci.org/astrolet/lin.png)](http://travis-ci.org/astrolet/lin)
-# lin -- planting astrology language interface
+# lin -- astrology language interface, replanted as archai
+
+This module has been renamed to `archai`.
+Keeping `lin` around so that prior dependencies can continue to work.
+Please use `archai`, its `lin` branch is just a way to make it known.
 
 
 ## ABOUT
