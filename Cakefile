@@ -178,14 +178,14 @@ task 'pages:publish', "Publish pages", ->
   checkoutBranch = (callback) ->
     series [
       (sh "rm -rf pages/")
-      (sh "git clone -q -b gh-pages git@github.com:astrolet/lin.git pages")
+      (sh "git clone -q -b gh-pages git@github.com:astrolet/archai.git pages")
       (sh "rm -rf pages/*")
     ], callback
 
   publish = (callback) ->
     series [
       (sh "cd pages/ && git add . && git commit -m 'rebuild manual' || true")
-      (sh "cd pages/ && git push git@github.com:astrolet/lin.git gh-pages")
+      (sh "cd pages/ && git push git@github.com:astrolet/archai.git gh-pages")
       (sh "rm -rf pages/")
     ], callback
 

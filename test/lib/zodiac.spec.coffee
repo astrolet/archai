@@ -1,4 +1,5 @@
-zodiac = new (require "../../index").Zodiac
+#zodiac = new (require "../../index").Zodiac
+zodiac = (new (require "../../index").Cosmos).zodiac
 assert = (require "chai").assert
 should = (require "chai").should
 

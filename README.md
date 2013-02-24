@@ -1,8 +1,13 @@
 # [![Build Status](https://secure.travis-ci.org/astrolet/archai.png)](http://travis-ci.org/astrolet/archai)
 # archai -- animating the cosmos, by definition and from a human use case condition / perspective
 
+>     Universal principles, original forms; the fundamental
+>     essences and primordial forces that animate the cosmos.
 
-## ABOUT
+Quoting the [Journal of Archetypal Cosmology](http://www.archaijournal.org)
+
+
+## USE
 
 See `test/lib/*` for example use of:
 
