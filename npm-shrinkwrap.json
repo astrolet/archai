@@ -1,6 +1,6 @@
 {
   "name": "archai",
-  "version": "0.2.0-1",
+  "version": "0.2.1",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -72,6 +72,37 @@
             }
           }
         },
+        "mocha": {
+          "version": "1.7.4",
+          "dependencies": {
+            "commander": {
+              "version": "0.6.1"
+            },
+            "growl": {
+              "version": "1.6.1"
+            },
+            "jade": {
+              "version": "0.26.3",
+              "dependencies": {
+                "mkdirp": {
+                  "version": "0.3.0"
+                }
+              }
+            },
+            "diff": {
+              "version": "1.0.2"
+            },
+            "debug": {
+              "version": "0.7.0"
+            },
+            "mkdirp": {
+              "version": "0.3.3"
+            },
+            "ms": {
+              "version": "0.3.0"
+            }
+          }
+        },
         "police": {
           "version": "0.2.3",
           "dependencies": {
@@ -131,37 +162,6 @@
               "version": "0.2.3"
             }
           }
-        },
-        "mocha": {
-          "version": "1.7.4",
-          "dependencies": {
-            "commander": {
-              "version": "0.6.1"
-            },
-            "growl": {
-              "version": "1.6.1"
-            },
-            "jade": {
-              "version": "0.26.3",
-              "dependencies": {
-                "mkdirp": {
-                  "version": "0.3.0"
-                }
-              }
-            },
-            "diff": {
-              "version": "1.0.2"
-            },
-            "debug": {
-              "version": "0.7.0"
-            },
-            "mkdirp": {
-              "version": "0.3.3"
-            },
-            "ms": {
-              "version": "0.3.0"
-            }
-          }
         }
       }
     },
@@ -177,11 +177,11 @@
     "eyes": {
       "version": "0.1.7"
     },
-    "should": {
-      "version": "0.6.1"
-    },
     "jsonify": {
       "version": "0.0.0"
+    },
+    "should": {
+      "version": "0.6.1"
     },
     "mocha": {
       "version": "1.4.2",
