@@ -16,8 +16,8 @@ class Portion extends Backbone.RelationalModel
 # The various dispositor-fetching methods return a model from `Cosmos.ensemble`.
 class TrigonLords extends Backbone.Collection
 
-  initialize: (@attributes, @representation) ->
-    # Just for setting the `@representation`.
+  initialize: (@attributes, o) ->
+    @representation = o.representation
 
   dispositor: (id) ->
     @representation.collection.cosmos.ensemble.get id
@@ -34,9 +34,10 @@ class TrigonLords extends Backbone.Collection
 
 class Confines extends Backbone.Collection
 
-  initialize: (@attributes, @representation, scheme) ->
+  initialize: (@attributes, o) ->
+    @representation = o.representation
     # EC is for Egyptian Confines, there are at least also PC for Ptolemy's.
-    @scheme = scheme ? (_.first @attributes).scheme # the first scheme
+    @scheme = o.scheme ? (_.first @attributes).scheme # the first scheme
     @schemes = _.unique _.pluck @attributes, 'scheme' # array of all the schemes
 
   dispositor: (id) ->
@@ -89,12 +90,12 @@ class Representation extends Backbone.RelationalModel
 
     # The trigons attribute is tied to a `@trigons` nested collection.
     if attributes.trigons?
-      @trigons = new TrigonLords (@get 'trigons'), @
+      @trigons = new TrigonLords (@get "trigons"), representation: @
       nestCollection @, 'trigons', @trigons
 
     # The confines attribute is tied to a `@confines` nested collection.
     if attributes.confines?
-      @confines = new Confines (@get 'confines'), @
+      @confines = new Confines (@get "confines"), representation: @
       nestCollection @, 'confines', @confines
 
 
