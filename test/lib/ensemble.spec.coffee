@@ -1,5 +1,5 @@
-Ensemble = require("../../index").Ensemble
-ensemble = new Ensemble
+#ensemble = new (require "../../index").Ensemble
+ensemble = (new (require "../../index").Cosmos).ensemble
 _ = require "underscore"
 
 describe "Ensemble:", ->
