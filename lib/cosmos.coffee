@@ -148,11 +148,11 @@ class Cosmos
   # Also, for some reason polyglot doesn't like doublely-`undefined` language,
   # which is not a problem, because Cosmos will know its preferences.
   constructor: (@language = "en", @school) ->
-    @zodiac = new Zodiac @zodiacAttributes(), @
-    # TODO: pass @dispositing instead of [] to the new Ensemble.
+    @zodiac = new Zodiac null, @, @zodiacAttributes()
+    # TODO: @dispositing attributes to instantiate Ensemble with.
     # The `id`s are probably also needed, because `@ensemble` will contain
     # more than just dispositors...
-    @ensemble = new Ensemble [], @
+    @ensemble = new Ensemble null, @
 
 
   # (re?)-does Demiurge's work

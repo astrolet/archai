@@ -187,7 +187,7 @@ class Zodiac extends Backbone.Collection
 
   # Sometimes (only when testing?) `Zodiac` is instantiated without `@cosmos`.
   # The @language & @school are optional - defaults set by `@translatable ()`.
-  initialize: (models, @cosmos) ->
+  initialize: (models, @cosmos, attributes) ->
     if @cosmos?
       @school   = @cosmos.school
       @language = @cosmos.language
@@ -206,7 +206,7 @@ class Zodiac extends Backbone.Collection
       for attribute, position of @zoidia.attributes.use
         z[i][attribute] = @zoidia.the[i][position]
       # Additional attributes are passed in by the Cosmos builder.
-      _.extend z[i], models?[i]
+      _.extend z[i], attributes?[i]
     @reset z
 
     @ # chainable
